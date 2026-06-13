@@ -36,7 +36,6 @@
     html { scroll-behavior: smooth; }
     body { background-color: #0c0c0e; color: #e4e4e7; font-family: 'Inter', sans-serif; }
 
-    /* Pulse dot */
     .pulse-dot {
       width: 8px; height: 8px;
       background: #ef4444;
@@ -57,7 +56,6 @@
       100% { opacity: 0;   transform: scale(2);   }
     }
 
-    /* Nav underline hover */
     .nav-link {
       position: relative;
       color: #a1a1aa;
@@ -76,12 +74,8 @@
     .nav-link:hover { color: #f4f4f5; }
     .nav-link:hover::after { width: 100%; }
 
-    /* Card left-accent stripe */
-    .card-stripe {
-      border-left: 2px solid #ef4444;
-    }
+    .card-stripe { border-left: 2px solid #ef4444; }
 
-    /* Form inputs */
     .form-input {
       background: #111114;
       border: 1px solid #27272a;
@@ -101,7 +95,6 @@
     .form-input::placeholder { color: #52525b; }
     select.form-input option { background: #111114; }
 
-    /* Primary button */
     .btn-primary {
       background: #ef4444;
       color: #fff;
@@ -120,7 +113,6 @@
     .btn-primary:hover { background: #dc2626; transform: translateY(-1px); }
     .btn-primary:active { transform: translateY(0); }
 
-    /* Secondary button */
     .btn-secondary {
       background: transparent;
       color: #e4e4e7;
@@ -138,7 +130,6 @@
     }
     .btn-secondary:hover { border-color: #ef4444; color: #ef4444; }
 
-    /* Success message */
     .success-msg {
       display: none;
       background: rgba(239,68,68,0.08);
@@ -150,7 +141,6 @@
       letter-spacing: 0.01em;
     }
 
-    /* Section divider line */
     .section-rule {
       width: 40px;
       height: 2px;
@@ -158,7 +148,6 @@
       margin-bottom: 1.5rem;
     }
 
-    /* Stat badge */
     .stat-badge {
       display: inline-flex;
       align-items: center;
@@ -174,43 +163,34 @@
       font-family: 'Syne', sans-serif;
     }
 
-    /* Scroll reveal */
     .reveal { opacity: 0; transform: translateY(24px); transition: opacity 0.6s ease, transform 0.6s ease; }
     .reveal.visible { opacity: 1; transform: translateY(0); }
 
-    /* Footer */
     footer a:hover { color: #ef4444; }
   </style>
 </head>
 <body class="antialiased">
 
-  <!-- ═══════════════════════════ NAV ═══════════════════════════ -->
+  <!-- NAV -->
   <header class="fixed top-0 left-0 right-0 z-50 border-b border-border/60" style="background: rgba(12,12,14,0.85); backdrop-filter: blur(16px);">
     <nav class="max-w-6xl mx-auto px-6 h-16 flex items-center justify-between">
-
       <a href="#" class="font-display font-800 text-light tracking-tight" style="font-size:1.15rem; font-weight:800; letter-spacing:-0.01em;">
         Chatter<span class="text-accent">help</span>
       </a>
-
       <div class="hidden md:flex items-center gap-8">
         <a href="#services"  class="nav-link">Services</a>
         <a href="#audit"     class="nav-link">Audits</a>
         <a href="#reviewers" class="nav-link">Reviewers</a>
       </div>
-
       <a href="#audit" class="hidden md:inline-flex items-center gap-2 font-display font-600 text-xs uppercase tracking-widest text-accent border border-accent/40 hover:border-accent hover:bg-accent/5 transition-all px-4 py-2 rounded-md" style="font-size:0.75rem;">
         Request Audit
       </a>
-
-      <!-- Mobile hamburger -->
       <button id="mobile-menu-btn" class="md:hidden text-soft focus:outline-none" aria-label="Menu">
         <svg width="22" height="22" fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24">
           <path stroke-linecap="round" stroke-linejoin="round" d="M4 6h16M4 12h16M4 18h16"/>
         </svg>
       </button>
     </nav>
-
-    <!-- Mobile dropdown -->
     <div id="mobile-menu" class="md:hidden hidden px-6 pb-4 border-t border-border/40" style="background: rgba(12,12,14,0.97);">
       <div class="flex flex-col gap-4 pt-4">
         <a href="#services"  class="nav-link" onclick="document.getElementById('mobile-menu').classList.add('hidden')">Services</a>
@@ -220,24 +200,20 @@
     </div>
   </header>
 
-  <!-- ═══════════════════════════ HERO ═══════════════════════════ -->
+  <!-- HERO -->
   <section class="min-h-screen flex items-center pt-16" style="background: radial-gradient(ellipse 80% 60% at 50% -10%, rgba(239,68,68,0.07) 0%, transparent 70%);">
     <div class="max-w-6xl mx-auto px-6 py-24 w-full">
-
       <div class="flex flex-col items-start max-w-3xl">
         <div class="stat-badge mb-8">
           <span class="pulse-dot"></span>
           70+ Active Reviewers — Live Community
         </div>
-
         <h1 class="font-display mb-6 text-light leading-none" style="font-size: clamp(2.6rem, 7vw, 5.5rem); font-weight: 800; letter-spacing: -0.03em;">
           The Intelligence<br/>Layer Your<br/><span class="text-accent">Content Needs.</span>
         </h1>
-
         <p class="text-soft text-lg mb-10 max-w-xl leading-relaxed" style="font-weight:300;">
           Creator Focus Groups and Audience Retention Audits powered by a private network of active media professionals — not algorithms.
         </p>
-
         <div class="flex flex-col sm:flex-row gap-4">
           <a href="#audit" class="font-display font-600 text-sm uppercase tracking-widest bg-accent hover:bg-red-600 text-white transition-all px-7 py-3.5 rounded-md" style="font-weight:600;">
             Request an Audit
@@ -247,8 +223,6 @@
           </a>
         </div>
       </div>
-
-      <!-- Floating stat strip -->
       <div class="mt-20 grid grid-cols-3 gap-px border border-border rounded-lg overflow-hidden max-w-2xl" style="background:#27272a;">
         <div class="bg-card px-6 py-5 text-center">
           <div class="font-display text-2xl font-800 text-light mb-1" style="font-weight:800;">70+</div>
@@ -263,14 +237,12 @@
           <div class="text-muted text-xs uppercase tracking-widest" style="font-size:0.7rem;">Manual Review</div>
         </div>
       </div>
-
     </div>
   </section>
 
-  <!-- ═══════════════════════════ SERVICES ═══════════════════════════ -->
+  <!-- SERVICES -->
   <section id="services" class="py-24 border-t border-border">
     <div class="max-w-6xl mx-auto px-6">
-
       <div class="reveal mb-16">
         <div class="section-rule"></div>
         <p class="text-xs uppercase tracking-widest text-muted font-display mb-4" style="letter-spacing:0.12em;">What We Offer</p>
@@ -281,10 +253,7 @@
           Every signal we provide comes from real human attention — not modeled predictions or scraped proxies.
         </p>
       </div>
-
       <div class="grid md:grid-cols-3 gap-6">
-
-        <!-- Card 1 -->
         <div class="reveal card-stripe bg-card rounded-lg p-7 border border-border hover:border-accent/30 transition-colors">
           <div class="mb-5">
             <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="#ef4444" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
@@ -299,8 +268,6 @@
             <span class="text-xs text-muted uppercase tracking-widest" style="letter-spacing:0.1em;">Human-first methodology</span>
           </div>
         </div>
-
-        <!-- Card 2 -->
         <div class="reveal card-stripe bg-card rounded-lg p-7 border border-border hover:border-accent/30 transition-colors" style="transition-delay:0.1s;">
           <div class="mb-5">
             <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="#ef4444" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
@@ -315,8 +282,6 @@
             <span class="text-xs text-muted uppercase tracking-widest" style="letter-spacing:0.1em;">48-hour reporting cycle</span>
           </div>
         </div>
-
-        <!-- Card 3 -->
         <div class="reveal card-stripe bg-card rounded-lg p-7 border border-border hover:border-accent/30 transition-colors" style="transition-delay:0.2s;">
           <div class="mb-5">
             <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="#ef4444" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
@@ -331,17 +296,14 @@
             <span class="text-xs text-muted uppercase tracking-widest" style="letter-spacing:0.1em;">Application-only network</span>
           </div>
         </div>
-
       </div>
     </div>
   </section>
 
-  <!-- ═══════════════════════ CLIENT INTAKE / AUDIT FORM ═══════════════════ -->
+  <!-- CLIENT INTAKE / AUDIT FORM -->
   <section id="audit" class="py-24 border-t border-border" style="background: radial-gradient(ellipse 60% 50% at 50% 100%, rgba(239,68,68,0.05) 0%, transparent 70%);">
     <div class="max-w-6xl mx-auto px-6">
       <div class="grid lg:grid-cols-2 gap-16 items-start">
-
-        <!-- Left: Copy -->
         <div class="reveal">
           <div class="section-rule"></div>
           <p class="text-xs uppercase tracking-widest text-muted font-display mb-4" style="letter-spacing:0.12em;">Client Intake</p>
@@ -351,8 +313,6 @@
           <p class="text-soft mb-8 leading-relaxed" style="font-weight:300; max-width:420px;">
             Ensure your content resonates from the first second. Our private focus group of 70+ active creators provides the initial retention signals and community feedback needed for a successful launch.
           </p>
-
-          <!-- Process list -->
           <div class="space-y-4">
             <div class="flex items-start gap-4">
               <span class="flex-shrink-0 w-6 h-6 rounded-full bg-accent/10 border border-accent/30 flex items-center justify-center text-accent font-display font-700 text-xs">1</span>
@@ -378,13 +338,19 @@
           </div>
         </div>
 
-        <!-- Right: Form -->
+        <!-- Audit Form — Name field added -->
         <div class="reveal">
           <div class="bg-card border border-border rounded-xl p-8">
             <h3 class="font-display text-light mb-2" style="font-size:1.1rem; font-weight:700;">Request an Audit Mission</h3>
             <p class="text-muted text-sm mb-7">Complete the form — we'll handle the rest.</p>
-
             <form id="audit-form" class="space-y-4" novalidate>
+
+              <!-- ✦ NEW: Name field -->
+              <div>
+                <label class="block text-xs text-muted uppercase tracking-widest mb-2 font-display" style="letter-spacing:0.08em;">Full Name</label>
+                <input id="audit-name" type="text" class="form-input" placeholder="Your name" required />
+              </div>
+
               <div>
                 <label class="block text-xs text-muted uppercase tracking-widest mb-2 font-display" style="letter-spacing:0.08em;">Platform</label>
                 <select id="audit-platform" class="form-input" required>
@@ -421,47 +387,37 @@
     </div>
   </section>
 
-  <!-- ═══════════════════════ TALENT INTAKE / REVIEWER FORM ═══════════════════ -->
+  <!-- TALENT INTAKE / REVIEWER FORM -->
   <section id="reviewers" class="py-24 border-t border-border">
     <div class="max-w-6xl mx-auto px-6">
       <div class="grid lg:grid-cols-2 gap-16 items-start">
-
-        <!-- Right: Form (intentionally first on mobile via order) -->
         <div class="reveal order-2 lg:order-1">
           <div class="bg-card border border-border rounded-xl p-8">
             <h3 class="font-display text-light mb-2" style="font-size:1.1rem; font-weight:700;">Reviewer Application</h3>
             <p class="text-muted text-sm mb-7">Applications are reviewed within 5–7 business days.</p>
-
             <form id="reviewer-form" class="space-y-4" novalidate>
               <div>
                 <label class="block text-xs text-muted uppercase tracking-widest mb-2 font-display" style="letter-spacing:0.08em;">Full Name</label>
                 <input id="reviewer-name" type="text" class="form-input" placeholder="Your name" required />
               </div>
-
               <div>
                 <label class="block text-xs text-muted uppercase tracking-widest mb-2 font-display" style="letter-spacing:0.08em;">Social Handle</label>
                 <input id="reviewer-handle" type="text" class="form-input" placeholder="@yourchannel" required />
               </div>
-
               <div>
                 <label class="block text-xs text-muted uppercase tracking-widest mb-2 font-display" style="letter-spacing:0.08em;">Email Address</label>
                 <input id="reviewer-email" type="email" class="form-input" placeholder="you@example.com" required />
               </div>
-
               <div id="reviewer-error" class="hidden text-accent text-sm py-2"></div>
-
               <div class="pt-2">
                 <button type="submit" class="btn-secondary">Apply to the Network</button>
               </div>
-
               <div id="reviewer-success" class="success-msg">
                 ✦ Mission received. Our reviewers are being notified.
               </div>
             </form>
           </div>
         </div>
-
-        <!-- Left: Copy -->
         <div class="reveal order-1 lg:order-2">
           <div class="section-rule"></div>
           <p class="text-xs uppercase tracking-widest text-muted font-display mb-4" style="letter-spacing:0.12em;">Talent Intake</p>
@@ -471,8 +427,6 @@
           <p class="text-soft mb-8 leading-relaxed" style="font-weight:300; max-width:420px;">
             Apply to join an exclusive community of creators providing feedback and viewing data for the industry's newest content. Your perspective shapes what performs.
           </p>
-
-          <!-- Reviewer perks -->
           <div class="space-y-3">
             <div class="flex items-center gap-3">
               <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#ef4444" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
@@ -491,19 +445,16 @@
               <span class="text-soft text-sm">Flexible — review on your own schedule</span>
             </div>
           </div>
-
-          <!-- Community badge -->
           <div class="mt-10 inline-flex items-center gap-3 bg-surface border border-border rounded-lg px-5 py-4">
             <span class="pulse-dot"></span>
             <span class="text-soft text-sm">Network is actively accepting applications</span>
           </div>
         </div>
-
       </div>
     </div>
   </section>
 
-  <!-- ═══════════════════════════ FOOTER ═══════════════════════════ -->
+  <!-- FOOTER -->
   <footer class="border-t border-border py-12">
     <div class="max-w-6xl mx-auto px-6 flex flex-col md:flex-row items-center justify-between gap-6">
       <div>
@@ -521,23 +472,22 @@
     </div>
   </footer>
 
-  <!-- ═══════════════════════════ JAVASCRIPT ═══════════════════════════ -->
+  <!-- JAVASCRIPT -->
   <script>
-    // ─── Mobile menu ────────────────────────────────────────────────────────────
     document.getElementById('mobile-menu-btn').addEventListener('click', () => {
       document.getElementById('mobile-menu').classList.toggle('hidden');
     });
 
-    // ─── Scroll reveal ──────────────────────────────────────────────────────────
     const observer = new IntersectionObserver((entries) => {
       entries.forEach(e => { if (e.isIntersecting) e.target.classList.add('visible'); });
     }, { threshold: 0.12 });
     document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
 
-    // ─── AUDIT FORM ─────────────────────────────────────────────────────────────
+    // AUDIT FORM
     document.getElementById('audit-form').addEventListener('submit', async function(e) {
       e.preventDefault();
 
+      const name      = document.getElementById('audit-name').value.trim();
       const platform  = document.getElementById('audit-platform').value.trim();
       const videoLink = document.getElementById('audit-video-link').value.trim();
       const email     = document.getElementById('audit-email').value.trim();
@@ -545,10 +495,10 @@
       const successEl = document.getElementById('audit-success');
       const btn       = this.querySelector('button[type="submit"]');
 
-      // Basic validation
       errorEl.classList.add('hidden');
       errorEl.textContent = '';
 
+      if (!name)      { errorEl.textContent = 'Please enter your name.'; errorEl.classList.remove('hidden'); return; }
       if (!platform)  { errorEl.textContent = 'Please select a platform.'; errorEl.classList.remove('hidden'); return; }
       if (!videoLink) { errorEl.textContent = 'Please enter a valid video link.'; errorEl.classList.remove('hidden'); return; }
       if (!email || !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) {
@@ -560,12 +510,14 @@
       btn.textContent = 'Dispatching...';
       btn.disabled = true;
 
-      const AUDIT_WEBHOOK_URL = 'https://hook.eu1.make.com/i50rz29hxddqnj7tiy7xxsg7f8143416'; 
+      const AUDIT_WEBHOOK_URL = 'https://hook.eu1.make.com/i50rz29hxddqnj7tiy7xxsg7f8143416';
+
       const payload = {
-        type:       'audit_request',
-        platform:   platform,
-        video_link: videoLink,
-        email:      email,
+        type:         'audit_request',
+        name:         name,
+        platform:     platform,
+        video_link:   videoLink,
+        email:        email,
         submitted_at: new Date().toISOString(),
       };
 
@@ -575,17 +527,14 @@
           headers: { 'Content-Type': 'application/json' },
           body:    JSON.stringify(payload),
         });
-      } catch (_) {
-        // Gracefully continue — show success regardless (webhook may be placeholder)
-      }
+      } catch (_) {}
 
-      // Show success state
       successEl.style.display = 'block';
       btn.style.display = 'none';
       this.querySelectorAll('.form-input').forEach(el => el.disabled = true);
     });
 
-    // ─── REVIEWER FORM ──────────────────────────────────────────────────────────
+    // REVIEWER FORM
     document.getElementById('reviewer-form').addEventListener('submit', async function(e) {
       e.preventDefault();
 
@@ -610,7 +559,7 @@
       btn.textContent = 'Submitting...';
       btn.disabled = true;
 
-      const REVIEWER_WEBHOOK_URL = 'https://hook.eu1.make.com/e3fx0fpyacc2ibqcx5b9l92fpvspy8qk'; 
+      const REVIEWER_WEBHOOK_URL = 'https://hook.eu1.make.com/e3fx0fpyacc2ibqcx5b9l92fpvspy8qk';
 
       const payload = {
         type:          'reviewer_application',
@@ -626,9 +575,7 @@
           headers: { 'Content-Type': 'application/json' },
           body:    JSON.stringify(payload),
         });
-      } catch (_) {
-        // Gracefully continue
-      }
+      } catch (_) {}
 
       successEl.style.display = 'block';
       btn.style.display = 'none';
@@ -638,3 +585,4 @@
 
 </body>
 </html>
+
