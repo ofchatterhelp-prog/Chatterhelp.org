@@ -56,7 +56,6 @@
 </head>
 <body class="antialiased">
 
-  <!-- NAV -->
   <header class="fixed top-0 left-0 right-0 z-50 border-b border-border/60" style="background:rgba(12,12,14,.85);backdrop-filter:blur(16px);">
     <nav class="max-w-6xl mx-auto px-6 h-16 flex items-center justify-between">
       <a href="#" class="font-display text-light" style="font-size:1.15rem;font-weight:800;letter-spacing:-.01em;">Chatter<span class="text-accent">help</span></a>
@@ -79,7 +78,6 @@
     </div>
   </header>
 
-  <!-- HERO -->
   <section class="min-h-screen flex items-center pt-16" style="background:radial-gradient(ellipse 80% 60% at 50% -10%,rgba(239,68,68,.07) 0%,transparent 70%);">
     <div class="max-w-6xl mx-auto px-6 py-24 w-full">
       <div class="flex flex-col items-start max-w-3xl">
@@ -101,7 +99,6 @@
     </div>
   </section>
 
-  <!-- SERVICES -->
   <section id="services" class="py-24 border-t border-border">
     <div class="max-w-6xl mx-auto px-6">
       <div class="reveal mb-16">
@@ -133,7 +130,6 @@
     </div>
   </section>
 
-  <!-- AUDIT FORM -->
   <section id="audit" class="py-24 border-t border-border" style="background:radial-gradient(ellipse 60% 50% at 50% 100%,rgba(239,68,68,.05) 0%,transparent 70%);">
     <div class="max-w-6xl mx-auto px-6">
       <div class="grid lg:grid-cols-2 gap-16 items-start">
@@ -218,7 +214,6 @@
     </div>
   </section>
 
-  <!-- REVIEWER FORM -->
   <section id="reviewers" class="py-24 border-t border-border">
     <div class="max-w-6xl mx-auto px-6">
       <div class="grid lg:grid-cols-2 gap-16 items-start">
@@ -282,7 +277,6 @@
     </div>
   </section>
 
-  <!-- FOOTER -->
   <footer class="border-t border-border py-12">
     <div class="max-w-6xl mx-auto px-6 flex flex-col md:flex-row items-center justify-between gap-6">
       <div>
@@ -299,14 +293,14 @@
   </footer>
 
   <script>
-    // Mobile menu
+    // Mobile menu toggle
     document.getElementById('mobile-menu-btn').addEventListener('click',()=>{document.getElementById('mobile-menu').classList.toggle('hidden');});
 
-    // Scroll reveal
+    // Scroll reveal animation engine
     const observer=new IntersectionObserver((entries)=>{entries.forEach(e=>{if(e.isIntersecting)e.target.classList.add('visible');});},{threshold:.12});
     document.querySelectorAll('.reveal').forEach(el=>observer.observe(el));
 
-    // Content type toggle
+    // Content type selector logic
     const toggleBtns = document.querySelectorAll('#audit-content-type-toggle .toggle-btn');
     const contentTypeInput = document.getElementById('audit-content-type');
     const linkLabel = document.getElementById('audit-link-label');
@@ -333,7 +327,11 @@
       });
     });
 
-    // AUDIT FORM
+    // ========================================================
+    // DUAL SUBMISSIONS: MAKE.COM WEBHOOKS + GOOGLE APPS SCRIPT
+    // ========================================================
+
+    // 1. AUDIT INTAKE FORM
     document.getElementById('audit-form').addEventListener('submit', async function(e) {
       e.preventDefault();
       const name=document.getElementById('audit-name').value.trim();
@@ -354,15 +352,33 @@
       btn.textContent='Dispatching...'; btn.disabled=true;
 
       const AUDIT_WEBHOOK_URL='https://hook.eu1.make.com/i50rz29hxddqnj7tiy7xxsg7f8143416';
+      const GOOGLE_SCRIPT_URL = 'https://script.google.com/macros/s/AKfycbxe6Tfnz5E05L6tN944tXpx8eAL8f8h1sk88cbJimQ2sRh-kDVD8iN5P38Zz6PFyQ_L/exec';
+      
       const payload={type:'audit_request',name,platform,content_type:contentType,content_link:videoLink,email,submitted_at:new Date().toISOString()};
 
-      try{await fetch(AUDIT_WEBHOOK_URL,{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify(payload)});}catch(_){}
+      try {
+        await Promise.all([
+          fetch(AUDIT_WEBHOOK_URL, {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify(payload)
+          }),
+          fetch(GOOGLE_SCRIPT_URL, {
+            method: 'POST',
+            mode: 'no-cors',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify(payload)
+          })
+        ]);
+      } catch(err) {
+        console.error('Data sync log tracking error:', err);
+      }
 
       successEl.style.display='block'; btn.style.display='none';
       this.querySelectorAll('.form-input').forEach(el=>el.disabled=true);
     });
 
-    // REVIEWER FORM
+    // 2. REVIEWER APPLICATION FORM
     document.getElementById('reviewer-form').addEventListener('submit', async function(e) {
       e.preventDefault();
       const name=document.getElementById('reviewer-name').value.trim();
@@ -382,9 +398,27 @@
       btn.textContent='Submitting...'; btn.disabled=true;
 
       const REVIEWER_WEBHOOK_URL='https://hook.eu1.make.com/e3fx0fpyacc2ibqcx5b9l92fpvspy8qk';
+      const GOOGLE_SCRIPT_URL = 'https://script.google.com/macros/s/AKfycbxe6Tfnz5E05L6tN944tXpx8eAL8f8h1sk88cbJimQ2sRh-kDVD8iN5P38Zz6PFyQ_L/exec';
+      
       const payload={type:'reviewer_application',name,platform,social_handle:handle,email,submitted_at:new Date().toISOString()};
 
-      try{await fetch(REVIEWER_WEBHOOK_URL,{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify(payload)});}catch(_){}
+      try {
+        await Promise.all([
+          fetch(REVIEWER_WEBHOOK_URL, {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify(payload)
+          }),
+          fetch(GOOGLE_SCRIPT_URL, {
+            method: 'POST',
+            mode: 'no-cors',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify(payload)
+          })
+        ]);
+      } catch(err) {
+        console.error('Data sync log tracking error:', err);
+      }
 
       successEl.style.display='block'; btn.style.display='none';
       this.querySelectorAll('.form-input').forEach(el=>el.disabled=true);
@@ -392,3 +426,4 @@
   </script>
 </body>
 </html>
+      
