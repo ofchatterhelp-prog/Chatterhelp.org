@@ -13,229 +13,90 @@
       theme: {
         extend: {
           colors: {
-            bg:      '#0c0c0e',
-            surface: '#111114',
-            card:    '#161619',
-            border:  '#27272a',
-            muted:   '#71717a',
-            soft:    '#a1a1aa',
-            light:   '#e4e4e7',
-            accent:  '#ef4444',
-            'accent-dim': '#7f1d1d',
+            bg:'#0c0c0e', surface:'#111114', card:'#161619',
+            border:'#27272a', muted:'#71717a', soft:'#a1a1aa',
+            light:'#e4e4e7', accent:'#ef4444', 'accent-dim':'#7f1d1d',
           },
-          fontFamily: {
-            display: ['Syne', 'sans-serif'],
-            body:    ['Inter', 'sans-serif'],
-          },
+          fontFamily: { display:['Syne','sans-serif'], body:['Inter','sans-serif'] },
         },
       },
     }
   </script>
   <style>
-    *, *::before, *::after { box-sizing: border-box; }
-    html { scroll-behavior: smooth; }
-    body { background-color: #0c0c0e; color: #e4e4e7; font-family: 'Inter', sans-serif; }
-
-    .pulse-dot {
-      width: 8px; height: 8px;
-      background: #ef4444;
-      border-radius: 50%;
-      display: inline-block;
-      position: relative;
-    }
-    .pulse-dot::after {
-      content: '';
-      position: absolute;
-      inset: -4px;
-      border-radius: 50%;
-      border: 1.5px solid #ef4444;
-      animation: pulse-ring 1.8s ease-out infinite;
-    }
-    @keyframes pulse-ring {
-      0%   { opacity: 0.8; transform: scale(0.6); }
-      100% { opacity: 0;   transform: scale(2);   }
-    }
-
-    .nav-link {
-      position: relative;
-      color: #a1a1aa;
-      transition: color 0.2s;
-      font-size: 0.875rem;
-      letter-spacing: 0.02em;
-    }
-    .nav-link::after {
-      content: '';
-      position: absolute;
-      left: 0; bottom: -2px;
-      width: 0; height: 1px;
-      background: #ef4444;
-      transition: width 0.25s ease;
-    }
-    .nav-link:hover { color: #f4f4f5; }
-    .nav-link:hover::after { width: 100%; }
-
-    .card-stripe { border-left: 2px solid #ef4444; }
-
-    .form-input {
-      background: #111114;
-      border: 1px solid #27272a;
-      color: #e4e4e7;
-      padding: 0.75rem 1rem;
-      border-radius: 6px;
-      width: 100%;
-      font-family: 'Inter', sans-serif;
-      font-size: 0.9rem;
-      outline: none;
-      transition: border-color 0.2s, box-shadow 0.2s;
-    }
-    .form-input:focus {
-      border-color: #ef4444;
-      box-shadow: 0 0 0 3px rgba(239,68,68,0.12);
-    }
-    .form-input::placeholder { color: #52525b; }
-    select.form-input option { background: #111114; }
-
-    .btn-primary {
-      background: #ef4444;
-      color: #fff;
-      font-family: 'Syne', sans-serif;
-      font-weight: 600;
-      font-size: 0.875rem;
-      letter-spacing: 0.05em;
-      text-transform: uppercase;
-      padding: 0.85rem 2rem;
-      border-radius: 6px;
-      border: none;
-      cursor: pointer;
-      transition: background 0.2s, transform 0.15s;
-      width: 100%;
-    }
-    .btn-primary:hover { background: #dc2626; transform: translateY(-1px); }
-    .btn-primary:active { transform: translateY(0); }
-
-    .btn-secondary {
-      background: transparent;
-      color: #e4e4e7;
-      font-family: 'Syne', sans-serif;
-      font-weight: 600;
-      font-size: 0.875rem;
-      letter-spacing: 0.05em;
-      text-transform: uppercase;
-      padding: 0.85rem 2rem;
-      border-radius: 6px;
-      border: 1px solid #27272a;
-      cursor: pointer;
-      transition: border-color 0.2s, color 0.2s;
-      width: 100%;
-    }
-    .btn-secondary:hover { border-color: #ef4444; color: #ef4444; }
-
-    .success-msg {
-      display: none;
-      background: rgba(239,68,68,0.08);
-      border: 1px solid rgba(239,68,68,0.3);
-      color: #fca5a5;
-      padding: 1rem 1.25rem;
-      border-radius: 6px;
-      font-size: 0.875rem;
-      letter-spacing: 0.01em;
-    }
-
-    .section-rule {
-      width: 40px;
-      height: 2px;
-      background: #ef4444;
-      margin-bottom: 1.5rem;
-    }
-
-    .stat-badge {
-      display: inline-flex;
-      align-items: center;
-      gap: 8px;
-      background: rgba(239,68,68,0.06);
-      border: 1px solid rgba(239,68,68,0.2);
-      padding: 0.4rem 0.85rem;
-      border-radius: 100px;
-      font-size: 0.78rem;
-      letter-spacing: 0.06em;
-      text-transform: uppercase;
-      color: #fca5a5;
-      font-family: 'Syne', sans-serif;
-    }
-
-    .reveal { opacity: 0; transform: translateY(24px); transition: opacity 0.6s ease, transform 0.6s ease; }
-    .reveal.visible { opacity: 1; transform: translateY(0); }
-
-    footer a:hover { color: #ef4444; }
+    *,*::before,*::after{box-sizing:border-box;}
+    html{scroll-behavior:smooth;}
+    body{background-color:#0c0c0e;color:#e4e4e7;font-family:'Inter',sans-serif;}
+    .pulse-dot{width:8px;height:8px;background:#ef4444;border-radius:50%;display:inline-block;position:relative;}
+    .pulse-dot::after{content:'';position:absolute;inset:-4px;border-radius:50%;border:1.5px solid #ef4444;animation:pulse-ring 1.8s ease-out infinite;}
+    @keyframes pulse-ring{0%{opacity:.8;transform:scale(.6);}100%{opacity:0;transform:scale(2);}}
+    .nav-link{position:relative;color:#a1a1aa;transition:color .2s;font-size:.875rem;letter-spacing:.02em;}
+    .nav-link::after{content:'';position:absolute;left:0;bottom:-2px;width:0;height:1px;background:#ef4444;transition:width .25s ease;}
+    .nav-link:hover{color:#f4f4f5;}.nav-link:hover::after{width:100%;}
+    .card-stripe{border-left:2px solid #ef4444;}
+    .form-input{background:#111114;border:1px solid #27272a;color:#e4e4e7;padding:.75rem 1rem;border-radius:6px;width:100%;font-family:'Inter',sans-serif;font-size:.9rem;outline:none;transition:border-color .2s,box-shadow .2s;}
+    .form-input:focus{border-color:#ef4444;box-shadow:0 0 0 3px rgba(239,68,68,.12);}
+    .form-input::placeholder{color:#52525b;}
+    select.form-input option{background:#111114;}
+    .btn-primary{background:#ef4444;color:#fff;font-family:'Syne',sans-serif;font-weight:600;font-size:.875rem;letter-spacing:.05em;text-transform:uppercase;padding:.85rem 2rem;border-radius:6px;border:none;cursor:pointer;transition:background .2s,transform .15s;width:100%;}
+    .btn-primary:hover{background:#dc2626;transform:translateY(-1px);}
+    .btn-secondary{background:transparent;color:#e4e4e7;font-family:'Syne',sans-serif;font-weight:600;font-size:.875rem;letter-spacing:.05em;text-transform:uppercase;padding:.85rem 2rem;border-radius:6px;border:1px solid #27272a;cursor:pointer;transition:border-color .2s,color .2s;width:100%;}
+    .btn-secondary:hover{border-color:#ef4444;color:#ef4444;}
+    .success-msg{display:none;background:rgba(239,68,68,.08);border:1px solid rgba(239,68,68,.3);color:#fca5a5;padding:1rem 1.25rem;border-radius:6px;font-size:.875rem;}
+    .section-rule{width:40px;height:2px;background:#ef4444;margin-bottom:1.5rem;}
+    .stat-badge{display:inline-flex;align-items:center;gap:8px;background:rgba(239,68,68,.06);border:1px solid rgba(239,68,68,.2);padding:.4rem .85rem;border-radius:100px;font-size:.78rem;letter-spacing:.06em;text-transform:uppercase;color:#fca5a5;font-family:'Syne',sans-serif;}
+    .reveal{opacity:0;transform:translateY(24px);transition:opacity .6s ease,transform .6s ease;}
+    .reveal.visible{opacity:1;transform:translateY(0);}
+    footer a:hover{color:#ef4444;}
+    /* Content type toggle */
+    .toggle-group{display:flex;gap:0;background:#111114;border:1px solid #27272a;border-radius:6px;padding:3px;}
+    .toggle-btn{flex:1;padding:.5rem .75rem;border-radius:4px;border:none;cursor:pointer;font-family:'Syne',sans-serif;font-size:.75rem;font-weight:600;text-transform:uppercase;letter-spacing:.06em;transition:all .2s;background:transparent;color:#71717a;}
+    .toggle-btn.active{background:#ef4444;color:#fff;}
+    .field-label{display:block;font-size:.7rem;color:#71717a;text-transform:uppercase;letter-spacing:.1em;margin-bottom:.5rem;font-family:'Syne',sans-serif;}
   </style>
 </head>
 <body class="antialiased">
 
   <!-- NAV -->
-  <header class="fixed top-0 left-0 right-0 z-50 border-b border-border/60" style="background: rgba(12,12,14,0.85); backdrop-filter: blur(16px);">
+  <header class="fixed top-0 left-0 right-0 z-50 border-b border-border/60" style="background:rgba(12,12,14,.85);backdrop-filter:blur(16px);">
     <nav class="max-w-6xl mx-auto px-6 h-16 flex items-center justify-between">
-      <a href="#" class="font-display font-800 text-light tracking-tight" style="font-size:1.15rem; font-weight:800; letter-spacing:-0.01em;">
-        Chatter<span class="text-accent">help</span>
-      </a>
+      <a href="#" class="font-display text-light" style="font-size:1.15rem;font-weight:800;letter-spacing:-.01em;">Chatter<span class="text-accent">help</span></a>
       <div class="hidden md:flex items-center gap-8">
-        <a href="#services"  class="nav-link">Services</a>
-        <a href="#audit"     class="nav-link">Audits</a>
+        <a href="#services" class="nav-link">Services</a>
+        <a href="#audit" class="nav-link">Audits</a>
         <a href="#reviewers" class="nav-link">Reviewers</a>
       </div>
-      <a href="#audit" class="hidden md:inline-flex items-center gap-2 font-display font-600 text-xs uppercase tracking-widest text-accent border border-accent/40 hover:border-accent hover:bg-accent/5 transition-all px-4 py-2 rounded-md" style="font-size:0.75rem;">
-        Request Audit
-      </a>
-      <button id="mobile-menu-btn" class="md:hidden text-soft focus:outline-none" aria-label="Menu">
-        <svg width="22" height="22" fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24">
-          <path stroke-linecap="round" stroke-linejoin="round" d="M4 6h16M4 12h16M4 18h16"/>
-        </svg>
+      <a href="#audit" class="hidden md:inline-flex items-center gap-2 font-display font-600 text-xs uppercase tracking-widest text-accent border border-accent/40 hover:border-accent hover:bg-accent/5 transition-all px-4 py-2 rounded-md" style="font-size:.75rem;">Request Audit</a>
+      <button id="mobile-menu-btn" class="md:hidden text-soft focus:outline-none">
+        <svg width="22" height="22" fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M4 6h16M4 12h16M4 18h16"/></svg>
       </button>
     </nav>
-    <div id="mobile-menu" class="md:hidden hidden px-6 pb-4 border-t border-border/40" style="background: rgba(12,12,14,0.97);">
+    <div id="mobile-menu" class="md:hidden hidden px-6 pb-4 border-t border-border/40" style="background:rgba(12,12,14,.97);">
       <div class="flex flex-col gap-4 pt-4">
-        <a href="#services"  class="nav-link" onclick="document.getElementById('mobile-menu').classList.add('hidden')">Services</a>
-        <a href="#audit"     class="nav-link" onclick="document.getElementById('mobile-menu').classList.add('hidden')">Audits</a>
+        <a href="#services" class="nav-link" onclick="document.getElementById('mobile-menu').classList.add('hidden')">Services</a>
+        <a href="#audit" class="nav-link" onclick="document.getElementById('mobile-menu').classList.add('hidden')">Audits</a>
         <a href="#reviewers" class="nav-link" onclick="document.getElementById('mobile-menu').classList.add('hidden')">Reviewers</a>
       </div>
     </div>
   </header>
 
   <!-- HERO -->
-  <section class="min-h-screen flex items-center pt-16" style="background: radial-gradient(ellipse 80% 60% at 50% -10%, rgba(239,68,68,0.07) 0%, transparent 70%);">
+  <section class="min-h-screen flex items-center pt-16" style="background:radial-gradient(ellipse 80% 60% at 50% -10%,rgba(239,68,68,.07) 0%,transparent 70%);">
     <div class="max-w-6xl mx-auto px-6 py-24 w-full">
       <div class="flex flex-col items-start max-w-3xl">
-        <div class="stat-badge mb-8">
-          <span class="pulse-dot"></span>
-          70+ Active Reviewers — Live Community
-        </div>
-        <h1 class="font-display mb-6 text-light leading-none" style="font-size: clamp(2.6rem, 7vw, 5.5rem); font-weight: 800; letter-spacing: -0.03em;">
+        <div class="stat-badge mb-8"><span class="pulse-dot"></span>70+ Active Reviewers — Live Community</div>
+        <h1 class="font-display mb-6 text-light leading-none" style="font-size:clamp(2.6rem,7vw,5.5rem);font-weight:800;letter-spacing:-.03em;">
           The Intelligence<br/>Layer Your<br/><span class="text-accent">Content Needs.</span>
         </h1>
-        <p class="text-soft text-lg mb-10 max-w-xl leading-relaxed" style="font-weight:300;">
-          Creator Focus Groups and Audience Retention Audits powered by a private network of active media professionals — not algorithms.
-        </p>
+        <p class="text-soft text-lg mb-10 max-w-xl leading-relaxed" style="font-weight:300;">Creator Focus Groups and Audience Retention Audits powered by a private network of active media professionals — not algorithms.</p>
         <div class="flex flex-col sm:flex-row gap-4">
-          <a href="#audit" class="font-display font-600 text-sm uppercase tracking-widest bg-accent hover:bg-red-600 text-white transition-all px-7 py-3.5 rounded-md" style="font-weight:600;">
-            Request an Audit
-          </a>
-          <a href="#reviewers" class="font-display font-600 text-sm uppercase tracking-widest border border-border hover:border-soft text-soft hover:text-light transition-all px-7 py-3.5 rounded-md" style="font-weight:600;">
-            Join as Reviewer
-          </a>
+          <a href="#audit" class="font-display text-sm uppercase tracking-widest bg-accent hover:bg-red-600 text-white transition-all px-7 py-3.5 rounded-md" style="font-weight:600;">Request an Audit</a>
+          <a href="#reviewers" class="font-display text-sm uppercase tracking-widest border border-border hover:border-soft text-soft hover:text-light transition-all px-7 py-3.5 rounded-md" style="font-weight:600;">Join as Reviewer</a>
         </div>
       </div>
       <div class="mt-20 grid grid-cols-3 gap-px border border-border rounded-lg overflow-hidden max-w-2xl" style="background:#27272a;">
-        <div class="bg-card px-6 py-5 text-center">
-          <div class="font-display text-2xl font-800 text-light mb-1" style="font-weight:800;">70+</div>
-          <div class="text-muted text-xs uppercase tracking-widest" style="font-size:0.7rem;">Active Creators</div>
-        </div>
-        <div class="bg-card px-6 py-5 text-center">
-          <div class="font-display text-2xl font-800 text-accent mb-1" style="font-weight:800;">48h</div>
-          <div class="text-muted text-xs uppercase tracking-widest" style="font-size:0.7rem;">Avg. Turnaround</div>
-        </div>
-        <div class="bg-card px-6 py-5 text-center">
-          <div class="font-display text-2xl font-800 text-light mb-1" style="font-weight:800;">100%</div>
-          <div class="text-muted text-xs uppercase tracking-widest" style="font-size:0.7rem;">Manual Review</div>
-        </div>
+        <div class="bg-card px-6 py-5 text-center"><div class="font-display text-2xl text-light mb-1" style="font-weight:800;">70+</div><div class="text-muted text-xs uppercase tracking-widest" style="font-size:.7rem;">Active Creators</div></div>
+        <div class="bg-card px-6 py-5 text-center"><div class="font-display text-2xl text-accent mb-1" style="font-weight:800;">48h</div><div class="text-muted text-xs uppercase tracking-widest" style="font-size:.7rem;">Avg. Turnaround</div></div>
+        <div class="bg-card px-6 py-5 text-center"><div class="font-display text-2xl text-light mb-1" style="font-weight:800;">100%</div><div class="text-muted text-xs uppercase tracking-widest" style="font-size:.7rem;">Manual Review</div></div>
       </div>
     </div>
   </section>
@@ -245,205 +106,172 @@
     <div class="max-w-6xl mx-auto px-6">
       <div class="reveal mb-16">
         <div class="section-rule"></div>
-        <p class="text-xs uppercase tracking-widest text-muted font-display mb-4" style="letter-spacing:0.12em;">What We Offer</p>
-        <h2 class="font-display text-light mb-4" style="font-size: clamp(1.8rem, 4vw, 3rem); font-weight:700; letter-spacing:-0.02em;">
-          Built for Creators.<br/>Verified by Creators.
-        </h2>
-        <p class="text-soft max-w-lg leading-relaxed" style="font-weight:300;">
-          Every signal we provide comes from real human attention — not modeled predictions or scraped proxies.
-        </p>
+        <p class="text-xs uppercase tracking-widest text-muted font-display mb-4" style="letter-spacing:.12em;">What We Offer</p>
+        <h2 class="font-display text-light mb-4" style="font-size:clamp(1.8rem,4vw,3rem);font-weight:700;letter-spacing:-.02em;">Built for Creators.<br/>Verified by Creators.</h2>
+        <p class="text-soft max-w-lg leading-relaxed" style="font-weight:300;">Every signal we provide comes from real human attention — not modeled predictions or scraped proxies.</p>
       </div>
       <div class="grid md:grid-cols-3 gap-6">
         <div class="reveal card-stripe bg-card rounded-lg p-7 border border-border hover:border-accent/30 transition-colors">
-          <div class="mb-5">
-            <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="#ef4444" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
-              <path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/>
-            </svg>
-          </div>
-          <h3 class="font-display text-light mb-3" style="font-size:1.15rem; font-weight:700;">Manual Review</h3>
-          <p class="text-soft text-sm leading-relaxed" style="font-weight:300;">
-            Every video is watched, timestamped, and annotated by vetted professionals from your exact target audience — no automation, no shortcuts.
-          </p>
-          <div class="mt-6 pt-5 border-t border-border">
-            <span class="text-xs text-muted uppercase tracking-widest" style="letter-spacing:0.1em;">Human-first methodology</span>
-          </div>
+          <div class="mb-5"><svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="#ef4444" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg></div>
+          <h3 class="font-display text-light mb-3" style="font-size:1.15rem;font-weight:700;">Manual Review</h3>
+          <p class="text-soft text-sm leading-relaxed" style="font-weight:300;">Every piece of content is watched, read, and annotated by vetted professionals from your exact target audience — no automation, no shortcuts.</p>
+          <div class="mt-6 pt-5 border-t border-border"><span class="text-xs text-muted uppercase tracking-widest" style="letter-spacing:.1em;">Human-first methodology</span></div>
         </div>
-        <div class="reveal card-stripe bg-card rounded-lg p-7 border border-border hover:border-accent/30 transition-colors" style="transition-delay:0.1s;">
-          <div class="mb-5">
-            <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="#ef4444" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
-              <polyline points="22 12 18 12 15 21 9 3 6 12 2 12"/>
-            </svg>
-          </div>
-          <h3 class="font-display text-light mb-3" style="font-size:1.15rem; font-weight:700;">Real-Time Data</h3>
-          <p class="text-soft text-sm leading-relaxed" style="font-weight:300;">
-            Watch-time curves, drop-off coordinates, and re-watch segments delivered within your audit window — actionable before your launch window closes.
-          </p>
-          <div class="mt-6 pt-5 border-t border-border">
-            <span class="text-xs text-muted uppercase tracking-widest" style="letter-spacing:0.1em;">48-hour reporting cycle</span>
-          </div>
+        <div class="reveal card-stripe bg-card rounded-lg p-7 border border-border hover:border-accent/30 transition-colors" style="transition-delay:.1s;">
+          <div class="mb-5"><svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="#ef4444" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="22 12 18 12 15 21 9 3 6 12 2 12"/></svg></div>
+          <h3 class="font-display text-light mb-3" style="font-size:1.15rem;font-weight:700;">Real-Time Data</h3>
+          <p class="text-soft text-sm leading-relaxed" style="font-weight:300;">Watch-time curves, drop-off coordinates, engagement signals, and re-watch segments delivered within your audit window.</p>
+          <div class="mt-6 pt-5 border-t border-border"><span class="text-xs text-muted uppercase tracking-widest" style="letter-spacing:.1em;">48-hour reporting cycle</span></div>
         </div>
-        <div class="reveal card-stripe bg-card rounded-lg p-7 border border-border hover:border-accent/30 transition-colors" style="transition-delay:0.2s;">
-          <div class="mb-5">
-            <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="#ef4444" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
-              <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/>
-            </svg>
-          </div>
-          <h3 class="font-display text-light mb-3" style="font-size:1.15rem; font-weight:700;">Verified Community</h3>
-          <p class="text-soft text-sm leading-relaxed" style="font-weight:300;">
-            Our reviewer pool is manually screened — channel metrics verified, consistency tracked, and inactive members pruned. You get signal, not noise.
-          </p>
-          <div class="mt-6 pt-5 border-t border-border">
-            <span class="text-xs text-muted uppercase tracking-widest" style="letter-spacing:0.1em;">Application-only network</span>
-          </div>
+        <div class="reveal card-stripe bg-card rounded-lg p-7 border border-border hover:border-accent/30 transition-colors" style="transition-delay:.2s;">
+          <div class="mb-5"><svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="#ef4444" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg></div>
+          <h3 class="font-display text-light mb-3" style="font-size:1.15rem;font-weight:700;">Verified Community</h3>
+          <p class="text-soft text-sm leading-relaxed" style="font-weight:300;">Our reviewer pool is manually screened — channel metrics verified, consistency tracked, and inactive members pruned. You get signal, not noise.</p>
+          <div class="mt-6 pt-5 border-t border-border"><span class="text-xs text-muted uppercase tracking-widest" style="letter-spacing:.1em;">Application-only network</span></div>
         </div>
       </div>
     </div>
   </section>
 
-  <!-- CLIENT INTAKE / AUDIT FORM -->
-  <section id="audit" class="py-24 border-t border-border" style="background: radial-gradient(ellipse 60% 50% at 50% 100%, rgba(239,68,68,0.05) 0%, transparent 70%);">
+  <!-- AUDIT FORM -->
+  <section id="audit" class="py-24 border-t border-border" style="background:radial-gradient(ellipse 60% 50% at 50% 100%,rgba(239,68,68,.05) 0%,transparent 70%);">
     <div class="max-w-6xl mx-auto px-6">
       <div class="grid lg:grid-cols-2 gap-16 items-start">
         <div class="reveal">
           <div class="section-rule"></div>
-          <p class="text-xs uppercase tracking-widest text-muted font-display mb-4" style="letter-spacing:0.12em;">Client Intake</p>
-          <h2 class="font-display text-light mb-5" style="font-size: clamp(1.8rem, 4vw, 2.8rem); font-weight:700; letter-spacing:-0.02em;">
-            Professional Audience<br/>Retention Audits.
-          </h2>
-          <p class="text-soft mb-8 leading-relaxed" style="font-weight:300; max-width:420px;">
-            Ensure your content resonates from the first second. Our private focus group of 70+ active creators provides the initial retention signals and community feedback needed for a successful launch.
-          </p>
+          <p class="text-xs uppercase tracking-widest text-muted font-display mb-4" style="letter-spacing:.12em;">Client Intake</p>
+          <h2 class="font-display text-light mb-5" style="font-size:clamp(1.8rem,4vw,2.8rem);font-weight:700;letter-spacing:-.02em;">Professional Audience<br/>Retention Audits.</h2>
+          <p class="text-soft mb-8 leading-relaxed" style="font-weight:300;max-width:420px;">Ensure your content resonates from the first second. Our private focus group of 70+ active creators provides the initial retention signals and community feedback needed for a successful launch.</p>
           <div class="space-y-4">
             <div class="flex items-start gap-4">
-              <span class="flex-shrink-0 w-6 h-6 rounded-full bg-accent/10 border border-accent/30 flex items-center justify-center text-accent font-display font-700 text-xs">1</span>
-              <div>
-                <p class="text-light text-sm font-500 mb-0.5" style="font-weight:500;">Submit your video link</p>
-                <p class="text-muted text-xs leading-relaxed">Private link or unlisted URL — stays within our network.</p>
-              </div>
+              <span class="flex-shrink-0 w-6 h-6 rounded-full bg-accent/10 border border-accent/30 flex items-center justify-center text-accent font-display text-xs" style="font-weight:700;">1</span>
+              <div><p class="text-light text-sm mb-0.5" style="font-weight:500;">Submit your content link</p><p class="text-muted text-xs leading-relaxed">Video or post — private or unlisted. Stays within our network.</p></div>
             </div>
             <div class="flex items-start gap-4">
-              <span class="flex-shrink-0 w-6 h-6 rounded-full bg-accent/10 border border-accent/30 flex items-center justify-center text-accent font-display font-700 text-xs">2</span>
-              <div>
-                <p class="text-light text-sm font-500 mb-0.5" style="font-weight:500;">Reviewers are dispatched</p>
-                <p class="text-muted text-xs leading-relaxed">Matched by platform and content niche within hours.</p>
-              </div>
+              <span class="flex-shrink-0 w-6 h-6 rounded-full bg-accent/10 border border-accent/30 flex items-center justify-center text-accent font-display text-xs" style="font-weight:700;">2</span>
+              <div><p class="text-light text-sm mb-0.5" style="font-weight:500;">Reviewers are dispatched</p><p class="text-muted text-xs leading-relaxed">Matched by platform and content niche within hours.</p></div>
             </div>
             <div class="flex items-start gap-4">
-              <span class="flex-shrink-0 w-6 h-6 rounded-full bg-accent/10 border border-accent/30 flex items-center justify-center text-accent font-display font-700 text-xs">3</span>
-              <div>
-                <p class="text-light text-sm font-500 mb-0.5" style="font-weight:500;">Receive your report</p>
-                <p class="text-muted text-xs leading-relaxed">Full retention curve, drop-off flags, and written notes delivered to your inbox.</p>
-              </div>
+              <span class="flex-shrink-0 w-6 h-6 rounded-full bg-accent/10 border border-accent/30 flex items-center justify-center text-accent font-display text-xs" style="font-weight:700;">3</span>
+              <div><p class="text-light text-sm mb-0.5" style="font-weight:500;">Receive your report</p><p class="text-muted text-xs leading-relaxed">Full retention data, engagement flags, and written feedback delivered to your inbox.</p></div>
             </div>
           </div>
         </div>
 
-        <!-- Audit Form — Name field added -->
         <div class="reveal">
           <div class="bg-card border border-border rounded-xl p-8">
-            <h3 class="font-display text-light mb-2" style="font-size:1.1rem; font-weight:700;">Request an Audit Mission</h3>
+            <h3 class="font-display text-light mb-2" style="font-size:1.1rem;font-weight:700;">Request an Audit Mission</h3>
             <p class="text-muted text-sm mb-7">Complete the form — we'll handle the rest.</p>
             <form id="audit-form" class="space-y-4" novalidate>
 
-              <!-- ✦ NEW: Name field -->
               <div>
-                <label class="block text-xs text-muted uppercase tracking-widest mb-2 font-display" style="letter-spacing:0.08em;">Full Name</label>
-                <input id="audit-name" type="text" class="form-input" placeholder="Your name" required />
+                <label class="field-label">Full Name</label>
+                <input id="audit-name" type="text" class="form-input" placeholder="Your full name" required />
               </div>
 
               <div>
-                <label class="block text-xs text-muted uppercase tracking-widest mb-2 font-display" style="letter-spacing:0.08em;">Platform</label>
+                <label class="field-label">Platform</label>
                 <select id="audit-platform" class="form-input" required>
                   <option value="" disabled selected>Select Platform</option>
                   <option value="YouTube">YouTube</option>
                   <option value="TikTok">TikTok</option>
+                  <option value="Instagram">Instagram</option>
+                  <option value="Facebook">Facebook</option>
+                  <option value="X / Twitter">X / Twitter</option>
+                  <option value="LinkedIn">LinkedIn</option>
+                  <option value="Pinterest">Pinterest</option>
+                  <option value="Snapchat">Snapchat</option>
+                  <option value="Twitch">Twitch</option>
+                  <option value="Other">Other</option>
                 </select>
               </div>
 
               <div>
-                <label class="block text-xs text-muted uppercase tracking-widest mb-2 font-display" style="letter-spacing:0.08em;">Direct Video Link</label>
-                <input id="audit-video-link" type="url" class="form-input" placeholder="https://youtube.com/watch?v=..." required />
+                <label class="field-label">Content Type</label>
+                <div class="toggle-group" id="audit-content-type-toggle">
+                  <button type="button" class="toggle-btn active" data-value="Video">📹 Video</button>
+                  <button type="button" class="toggle-btn" data-value="Short / Reel">⚡ Short / Reel</button>
+                  <button type="button" class="toggle-btn" data-value="Post / Image">🖼 Post / Image</button>
+                  <button type="button" class="toggle-btn" data-value="Carousel">📱 Carousel</button>
+                </div>
+                <input type="hidden" id="audit-content-type" value="Video" />
               </div>
 
               <div>
-                <label class="block text-xs text-muted uppercase tracking-widest mb-2 font-display" style="letter-spacing:0.08em;">Professional Email</label>
+                <label class="field-label" id="audit-link-label">Content Link</label>
+                <input id="audit-video-link" type="url" class="form-input" placeholder="https://..." required />
+                <p class="text-xs text-muted mt-1.5" id="audit-link-hint">Paste the direct link to your content. Unlisted links are accepted.</p>
+              </div>
+
+              <div>
+                <label class="field-label">Professional Email</label>
                 <input id="audit-email" type="email" class="form-input" placeholder="you@studio.com" required />
               </div>
 
               <div id="audit-error" class="hidden text-accent text-sm py-2"></div>
-
-              <div class="pt-2">
-                <button type="submit" class="btn-primary">Request Audit Mission</button>
-              </div>
-
-              <div id="audit-success" class="success-msg">
-                ✦ Mission received. Our reviewers are being notified.
-              </div>
+              <div class="pt-2"><button type="submit" class="btn-primary">Request Audit Mission</button></div>
+              <div id="audit-success" class="success-msg">✦ Mission received. Our reviewers are being notified.</div>
             </form>
           </div>
         </div>
-
       </div>
     </div>
   </section>
 
-  <!-- TALENT INTAKE / REVIEWER FORM -->
+  <!-- REVIEWER FORM -->
   <section id="reviewers" class="py-24 border-t border-border">
     <div class="max-w-6xl mx-auto px-6">
       <div class="grid lg:grid-cols-2 gap-16 items-start">
         <div class="reveal order-2 lg:order-1">
           <div class="bg-card border border-border rounded-xl p-8">
-            <h3 class="font-display text-light mb-2" style="font-size:1.1rem; font-weight:700;">Reviewer Application</h3>
+            <h3 class="font-display text-light mb-2" style="font-size:1.1rem;font-weight:700;">Reviewer Application</h3>
             <p class="text-muted text-sm mb-7">Applications are reviewed within 5–7 business days.</p>
             <form id="reviewer-form" class="space-y-4" novalidate>
               <div>
-                <label class="block text-xs text-muted uppercase tracking-widest mb-2 font-display" style="letter-spacing:0.08em;">Full Name</label>
+                <label class="field-label">Full Name</label>
                 <input id="reviewer-name" type="text" class="form-input" placeholder="Your name" required />
               </div>
               <div>
-                <label class="block text-xs text-muted uppercase tracking-widest mb-2 font-display" style="letter-spacing:0.08em;">Social Handle</label>
+                <label class="field-label">Primary Platform</label>
+                <select id="reviewer-platform" class="form-input" required>
+                  <option value="" disabled selected>Where do you create?</option>
+                  <option value="YouTube">YouTube</option>
+                  <option value="TikTok">TikTok</option>
+                  <option value="Instagram">Instagram</option>
+                  <option value="Facebook">Facebook</option>
+                  <option value="X / Twitter">X / Twitter</option>
+                  <option value="LinkedIn">LinkedIn</option>
+                  <option value="Pinterest">Pinterest</option>
+                  <option value="Snapchat">Snapchat</option>
+                  <option value="Twitch">Twitch</option>
+                  <option value="Multiple Platforms">Multiple Platforms</option>
+                  <option value="Other">Other</option>
+                </select>
+              </div>
+              <div>
+                <label class="field-label">Social Handle</label>
                 <input id="reviewer-handle" type="text" class="form-input" placeholder="@yourchannel" required />
               </div>
               <div>
-                <label class="block text-xs text-muted uppercase tracking-widest mb-2 font-display" style="letter-spacing:0.08em;">Email Address</label>
+                <label class="field-label">Email Address</label>
                 <input id="reviewer-email" type="email" class="form-input" placeholder="you@example.com" required />
               </div>
               <div id="reviewer-error" class="hidden text-accent text-sm py-2"></div>
-              <div class="pt-2">
-                <button type="submit" class="btn-secondary">Apply to the Network</button>
-              </div>
-              <div id="reviewer-success" class="success-msg">
-                ✦ Mission received. Our reviewers are being notified.
-              </div>
+              <div class="pt-2"><button type="submit" class="btn-secondary">Apply to the Network</button></div>
+              <div id="reviewer-success" class="success-msg">✦ Mission received. Our reviewers are being notified.</div>
             </form>
           </div>
         </div>
         <div class="reveal order-1 lg:order-2">
           <div class="section-rule"></div>
-          <p class="text-xs uppercase tracking-widest text-muted font-display mb-4" style="letter-spacing:0.12em;">Talent Intake</p>
-          <h2 class="font-display text-light mb-5" style="font-size: clamp(1.8rem, 4vw, 2.8rem); font-weight:700; letter-spacing:-0.02em;">
-            Join Our Global<br/>Reviewer Network.
-          </h2>
-          <p class="text-soft mb-8 leading-relaxed" style="font-weight:300; max-width:420px;">
-            Apply to join an exclusive community of creators providing feedback and viewing data for the industry's newest content. Your perspective shapes what performs.
-          </p>
+          <p class="text-xs uppercase tracking-widest text-muted font-display mb-4" style="letter-spacing:.12em;">Talent Intake</p>
+          <h2 class="font-display text-light mb-5" style="font-size:clamp(1.8rem,4vw,2.8rem);font-weight:700;letter-spacing:-.02em;">Join Our Global<br/>Reviewer Network.</h2>
+          <p class="text-soft mb-8 leading-relaxed" style="font-weight:300;max-width:420px;">Apply to join an exclusive community of creators providing feedback and viewing data for the industry's newest content. Your perspective shapes what performs.</p>
           <div class="space-y-3">
-            <div class="flex items-center gap-3">
-              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#ef4444" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
-              <span class="text-soft text-sm">Early access to unreleased content</span>
-            </div>
-            <div class="flex items-center gap-3">
-              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#ef4444" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
-              <span class="text-soft text-sm">Compensation per completed review session</span>
-            </div>
-            <div class="flex items-center gap-3">
-              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#ef4444" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
-              <span class="text-soft text-sm">Private community of 70+ media professionals</span>
-            </div>
-            <div class="flex items-center gap-3">
-              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#ef4444" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
-              <span class="text-soft text-sm">Flexible — review on your own schedule</span>
-            </div>
+            <div class="flex items-center gap-3"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#ef4444" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg><span class="text-soft text-sm">Early access to unreleased content</span></div>
+            <div class="flex items-center gap-3"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#ef4444" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg><span class="text-soft text-sm">Compensation per completed review session</span></div>
+            <div class="flex items-center gap-3"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#ef4444" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg><span class="text-soft text-sm">Private community of 70+ media professionals</span></div>
+            <div class="flex items-center gap-3"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#ef4444" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg><span class="text-soft text-sm">Flexible — review on your own schedule</span></div>
           </div>
           <div class="mt-10 inline-flex items-center gap-3 bg-surface border border-border rounded-lg px-5 py-4">
             <span class="pulse-dot"></span>
@@ -458,131 +286,109 @@
   <footer class="border-t border-border py-12">
     <div class="max-w-6xl mx-auto px-6 flex flex-col md:flex-row items-center justify-between gap-6">
       <div>
-        <span class="font-display text-light font-800" style="font-size:1rem; font-weight:800; letter-spacing:-0.01em;">
-          Chatter<span class="text-accent">help</span>
-        </span>
+        <span class="font-display text-light" style="font-size:1rem;font-weight:800;letter-spacing:-.01em;">Chatter<span class="text-accent">help</span></span>
         <p class="text-muted text-xs mt-1">Boutique Audience Intelligence Agency</p>
       </div>
       <div class="flex items-center gap-6">
-        <a href="#services"  class="text-muted text-xs uppercase tracking-widest hover:text-accent transition-colors" style="letter-spacing:0.08em;">Services</a>
-        <a href="#audit"     class="text-muted text-xs uppercase tracking-widest hover:text-accent transition-colors" style="letter-spacing:0.08em;">Audits</a>
-        <a href="#reviewers" class="text-muted text-xs uppercase tracking-widest hover:text-accent transition-colors" style="letter-spacing:0.08em;">Join</a>
+        <a href="#services" class="text-muted text-xs uppercase tracking-widest hover:text-accent transition-colors">Services</a>
+        <a href="#audit" class="text-muted text-xs uppercase tracking-widest hover:text-accent transition-colors">Audits</a>
+        <a href="#reviewers" class="text-muted text-xs uppercase tracking-widest hover:text-accent transition-colors">Join</a>
       </div>
       <p class="text-muted text-xs">&copy; 2025 Chatterhelp. All rights reserved.</p>
     </div>
   </footer>
 
-  <!-- JAVASCRIPT -->
   <script>
-    document.getElementById('mobile-menu-btn').addEventListener('click', () => {
-      document.getElementById('mobile-menu').classList.toggle('hidden');
-    });
+    // Mobile menu
+    document.getElementById('mobile-menu-btn').addEventListener('click',()=>{document.getElementById('mobile-menu').classList.toggle('hidden');});
 
-    const observer = new IntersectionObserver((entries) => {
-      entries.forEach(e => { if (e.isIntersecting) e.target.classList.add('visible'); });
-    }, { threshold: 0.12 });
-    document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
+    // Scroll reveal
+    const observer=new IntersectionObserver((entries)=>{entries.forEach(e=>{if(e.isIntersecting)e.target.classList.add('visible');});},{threshold:.12});
+    document.querySelectorAll('.reveal').forEach(el=>observer.observe(el));
+
+    // Content type toggle
+    const toggleBtns = document.querySelectorAll('#audit-content-type-toggle .toggle-btn');
+    const contentTypeInput = document.getElementById('audit-content-type');
+    const linkLabel = document.getElementById('audit-link-label');
+    const linkHint = document.getElementById('audit-link-hint');
+    const linkInput = document.getElementById('audit-video-link');
+
+    const hintMap = {
+      'Video': {label:'Video Link', hint:'Paste your direct video URL. Unlisted links accepted.', placeholder:'https://youtube.com/watch?v=...'},
+      'Short / Reel': {label:'Short / Reel Link', hint:'Paste the direct link to your Short, Reel, or TikTok.', placeholder:'https://tiktok.com/@you/video/...'},
+      'Post / Image': {label:'Post Link', hint:'Paste the link to your post or image content.', placeholder:'https://instagram.com/p/...'},
+      'Carousel': {label:'Carousel / Slide Link', hint:'Paste the link to your carousel or slide post.', placeholder:'https://linkedin.com/posts/...'},
+    };
+
+    toggleBtns.forEach(btn => {
+      btn.addEventListener('click', () => {
+        toggleBtns.forEach(b => b.classList.remove('active'));
+        btn.classList.add('active');
+        const val = btn.dataset.value;
+        contentTypeInput.value = val;
+        const map = hintMap[val];
+        linkLabel.textContent = map.label;
+        linkHint.textContent = map.hint;
+        linkInput.placeholder = map.placeholder;
+      });
+    });
 
     // AUDIT FORM
     document.getElementById('audit-form').addEventListener('submit', async function(e) {
       e.preventDefault();
+      const name=document.getElementById('audit-name').value.trim();
+      const platform=document.getElementById('audit-platform').value.trim();
+      const contentType=document.getElementById('audit-content-type').value;
+      const videoLink=document.getElementById('audit-video-link').value.trim();
+      const email=document.getElementById('audit-email').value.trim();
+      const errorEl=document.getElementById('audit-error');
+      const successEl=document.getElementById('audit-success');
+      const btn=this.querySelector('button[type="submit"]');
 
-      const name      = document.getElementById('audit-name').value.trim();
-      const platform  = document.getElementById('audit-platform').value.trim();
-      const videoLink = document.getElementById('audit-video-link').value.trim();
-      const email     = document.getElementById('audit-email').value.trim();
-      const errorEl   = document.getElementById('audit-error');
-      const successEl = document.getElementById('audit-success');
-      const btn       = this.querySelector('button[type="submit"]');
+      errorEl.classList.add('hidden'); errorEl.textContent='';
+      if(!name){errorEl.textContent='Please enter your name.';errorEl.classList.remove('hidden');return;}
+      if(!platform){errorEl.textContent='Please select a platform.';errorEl.classList.remove('hidden');return;}
+      if(!videoLink){errorEl.textContent='Please enter your content link.';errorEl.classList.remove('hidden');return;}
+      if(!email||!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)){errorEl.textContent='Please enter a valid email.';errorEl.classList.remove('hidden');return;}
 
-      errorEl.classList.add('hidden');
-      errorEl.textContent = '';
+      btn.textContent='Dispatching...'; btn.disabled=true;
 
-      if (!name)      { errorEl.textContent = 'Please enter your name.'; errorEl.classList.remove('hidden'); return; }
-      if (!platform)  { errorEl.textContent = 'Please select a platform.'; errorEl.classList.remove('hidden'); return; }
-      if (!videoLink) { errorEl.textContent = 'Please enter a valid video link.'; errorEl.classList.remove('hidden'); return; }
-      if (!email || !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) {
-        errorEl.textContent = 'Please enter a valid email address.';
-        errorEl.classList.remove('hidden');
-        return;
-      }
+      const AUDIT_WEBHOOK_URL='https://hook.eu1.make.com/i50rz29hxddqnj7tiy7xxsg7f8143416';
+      const payload={type:'audit_request',name,platform,content_type:contentType,content_link:videoLink,email,submitted_at:new Date().toISOString()};
 
-      btn.textContent = 'Dispatching...';
-      btn.disabled = true;
+      try{await fetch(AUDIT_WEBHOOK_URL,{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify(payload)});}catch(_){}
 
-      const AUDIT_WEBHOOK_URL = 'https://hook.eu1.make.com/i50rz29hxddqnj7tiy7xxsg7f8143416';
-
-      const payload = {
-        type:         'audit_request',
-        name:         name,
-        platform:     platform,
-        video_link:   videoLink,
-        email:        email,
-        submitted_at: new Date().toISOString(),
-      };
-
-      try {
-        await fetch(AUDIT_WEBHOOK_URL, {
-          method:  'POST',
-          headers: { 'Content-Type': 'application/json' },
-          body:    JSON.stringify(payload),
-        });
-      } catch (_) {}
-
-      successEl.style.display = 'block';
-      btn.style.display = 'none';
-      this.querySelectorAll('.form-input').forEach(el => el.disabled = true);
+      successEl.style.display='block'; btn.style.display='none';
+      this.querySelectorAll('.form-input').forEach(el=>el.disabled=true);
     });
 
     // REVIEWER FORM
     document.getElementById('reviewer-form').addEventListener('submit', async function(e) {
       e.preventDefault();
+      const name=document.getElementById('reviewer-name').value.trim();
+      const platform=document.getElementById('reviewer-platform').value.trim();
+      const handle=document.getElementById('reviewer-handle').value.trim();
+      const email=document.getElementById('reviewer-email').value.trim();
+      const errorEl=document.getElementById('reviewer-error');
+      const successEl=document.getElementById('reviewer-success');
+      const btn=this.querySelector('button[type="submit"]');
 
-      const name    = document.getElementById('reviewer-name').value.trim();
-      const handle  = document.getElementById('reviewer-handle').value.trim();
-      const email   = document.getElementById('reviewer-email').value.trim();
-      const errorEl   = document.getElementById('reviewer-error');
-      const successEl = document.getElementById('reviewer-success');
-      const btn       = this.querySelector('button[type="submit"]');
+      errorEl.classList.add('hidden'); errorEl.textContent='';
+      if(!name){errorEl.textContent='Please enter your name.';errorEl.classList.remove('hidden');return;}
+      if(!platform){errorEl.textContent='Please select your platform.';errorEl.classList.remove('hidden');return;}
+      if(!handle){errorEl.textContent='Please enter your social handle.';errorEl.classList.remove('hidden');return;}
+      if(!email||!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)){errorEl.textContent='Please enter a valid email.';errorEl.classList.remove('hidden');return;}
 
-      errorEl.classList.add('hidden');
-      errorEl.textContent = '';
+      btn.textContent='Submitting...'; btn.disabled=true;
 
-      if (!name)   { errorEl.textContent = 'Please enter your name.'; errorEl.classList.remove('hidden'); return; }
-      if (!handle) { errorEl.textContent = 'Please enter your social handle.'; errorEl.classList.remove('hidden'); return; }
-      if (!email || !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) {
-        errorEl.textContent = 'Please enter a valid email address.';
-        errorEl.classList.remove('hidden');
-        return;
-      }
+      const REVIEWER_WEBHOOK_URL='https://hook.eu1.make.com/e3fx0fpyacc2ibqcx5b9l92fpvspy8qk';
+      const payload={type:'reviewer_application',name,platform,social_handle:handle,email,submitted_at:new Date().toISOString()};
 
-      btn.textContent = 'Submitting...';
-      btn.disabled = true;
+      try{await fetch(REVIEWER_WEBHOOK_URL,{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify(payload)});}catch(_){}
 
-      const REVIEWER_WEBHOOK_URL = 'https://hook.eu1.make.com/e3fx0fpyacc2ibqcx5b9l92fpvspy8qk';
-
-      const payload = {
-        type:          'reviewer_application',
-        name:          name,
-        social_handle: handle,
-        email:         email,
-        submitted_at:  new Date().toISOString(),
-      };
-
-      try {
-        await fetch(REVIEWER_WEBHOOK_URL, {
-          method:  'POST',
-          headers: { 'Content-Type': 'application/json' },
-          body:    JSON.stringify(payload),
-        });
-      } catch (_) {}
-
-      successEl.style.display = 'block';
-      btn.style.display = 'none';
-      this.querySelectorAll('.form-input').forEach(el => el.disabled = true);
+      successEl.style.display='block'; btn.style.display='none';
+      this.querySelectorAll('.form-input').forEach(el=>el.disabled=true);
     });
   </script>
-
 </body>
 </html>
-
