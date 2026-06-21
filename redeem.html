@@ -273,7 +273,7 @@ const REDEEM_WEBHOOK_URL=_u(); // ← Replace with your Make webhook
 
       const payload={type:'voucher_redemption',voucher_code:code,name,email,platform,content_type:contentType,content_link:contentLink,voucher_source:source,voucher_sender:sender||'Not specified',submitted_at:new Date().toISOString()};
 
-      try{await fetch(REDEEM_WEBHOOK_URL,{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify(payload)});}catch(_){}
+      try{await fetch(REDEEM_WEBHOOK_URL,{method:'POST',mode:'no-cors',headers:{'Content-Type':'application/json'},body:JSON.stringify(payload)});}catch(_){}
 
       successEl.style.display='block'; btn.style.display='none';
       document.getElementById('voucher-code').disabled=true;
