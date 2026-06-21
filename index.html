@@ -64,6 +64,7 @@
         <a href="#services" class="nav-link">Services</a>
         <a href="#audit" class="nav-link">Audits</a>
         <a href="#reviewers" class="nav-link">Reviewers</a>
+        <a href="redeem.html" class="nav-link">Redeem Voucher</a>
       </div>
       <a href="#audit" class="hidden md:inline-flex items-center gap-2 font-display font-600 text-xs uppercase tracking-widest text-accent border border-accent/40 hover:border-accent hover:bg-accent/5 transition-all px-4 py-2 rounded-md" style="font-size:.75rem;">Request Audit</a>
       <button id="mobile-menu-btn" class="md:hidden text-soft focus:outline-none">
@@ -75,6 +76,7 @@
         <a href="#services" class="nav-link" onclick="document.getElementById('mobile-menu').classList.add('hidden')">Services</a>
         <a href="#audit" class="nav-link" onclick="document.getElementById('mobile-menu').classList.add('hidden')">Audits</a>
         <a href="#reviewers" class="nav-link" onclick="document.getElementById('mobile-menu').classList.add('hidden')">Reviewers</a>
+        <a href="redeem.html" class="nav-link" onclick="document.getElementById('mobile-menu').classList.add('hidden')">Redeem Voucher</a>
       </div>
     </div>
   </header>
@@ -282,6 +284,24 @@
     </div>
   </section>
 
+  <!-- VOUCHER CTA -->
+  <section class="border-t border-border py-14" style="background:radial-gradient(ellipse 60% 80% at 50% 50%,rgba(239,68,68,0.04) 0%,transparent 70%);">
+    <div class="max-w-6xl mx-auto px-6 flex flex-col md:flex-row items-center justify-between gap-8">
+      <div class="flex items-center gap-5">
+        <div class="flex-shrink-0 w-12 h-12 rounded-lg bg-accent/10 border border-accent/20 flex items-center justify-center">
+          <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#ef4444" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M20 12v6a2 2 0 0 1-2 2H6a2 2 0 0 1-2-2v-6"/><path d="M2 7h20v5H2z"/><path d="M12 22V7"/><path d="M12 7H7.5a2.5 2.5 0 0 1 0-5C11 2 12 7 12 7z"/><path d="M12 7h4.5a2.5 2.5 0 0 0 0-5C13 2 12 7 12 7z"/></svg>
+        </div>
+        <div>
+          <p class="font-display text-light mb-1" style="font-size:1rem;font-weight:700;">Have a Gift Voucher?</p>
+          <p class="text-muted text-sm">Redeem your complimentary audit and get your content reviewed within 48 hours.</p>
+        </div>
+      </div>
+      <a href="redeem.html" class="flex-shrink-0 font-display text-sm uppercase tracking-widest bg-accent hover:bg-red-600 text-white transition-all px-7 py-3.5 rounded-md" style="font-weight:600;">
+        Redeem Voucher →
+      </a>
+    </div>
+  </section>
+
   <!-- FOOTER -->
   <footer class="border-t border-border py-12">
     <div class="max-w-6xl mx-auto px-6 flex flex-col md:flex-row items-center justify-between gap-6">
@@ -293,6 +313,7 @@
         <a href="#services" class="text-muted text-xs uppercase tracking-widest hover:text-accent transition-colors">Services</a>
         <a href="#audit" class="text-muted text-xs uppercase tracking-widest hover:text-accent transition-colors">Audits</a>
         <a href="#reviewers" class="text-muted text-xs uppercase tracking-widest hover:text-accent transition-colors">Join</a>
+        <a href="redeem.html" class="text-muted text-xs uppercase tracking-widest hover:text-accent transition-colors">Redeem</a>
       </div>
       <p class="text-muted text-xs">&copy; 2025 Chatterhelp. All rights reserved.</p>
     </div>
@@ -357,7 +378,7 @@
 const AUDIT_WEBHOOK_URL=_u();
       const payload={type:'audit_request',name,platform,content_type:contentType,content_link:videoLink,email,submitted_at:new Date().toISOString()};
 
-      try{await fetch(AUDIT_WEBHOOK_URL,{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify(payload)});}catch(_){}
+      try{await fetch(AUDIT_WEBHOOK_URL,{method:'POST',mode:'no-cors',headers:{'Content-Type':'application/json'},body:JSON.stringify(payload)});}catch(_){}
 
       successEl.style.display='block'; btn.style.display='none';
       this.querySelectorAll('.form-input').forEach(el=>el.disabled=true);
@@ -385,7 +406,7 @@ const AUDIT_WEBHOOK_URL=_u();
       const REVIEWER_WEBHOOK_URL=_u();
       const payload={type:'reviewer_application',name,platform,social_handle:handle,email,submitted_at:new Date().toISOString()};
 
-      try{await fetch(REVIEWER_WEBHOOK_URL,{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify(payload)});}catch(_){}
+      try{await fetch(REVIEWER_WEBHOOK_URL,{method:'POST',mode:'no-cors',headers:{'Content-Type':'application/json'},body:JSON.stringify(payload)});}catch(_){}
 
       successEl.style.display='block'; btn.style.display='none';
       this.querySelectorAll('.form-input').forEach(el=>el.disabled=true);
