@@ -47,6 +47,22 @@
     .reveal{opacity:0;transform:translateY(24px);transition:opacity .6s ease,transform .6s ease;}
     .reveal.visible{opacity:1;transform:translateY(0);}
     footer a:hover{color:#ef4444;}
+    .gform-wrap{position:relative;overflow:hidden;background:#0c0c0e;border-radius:0 0 10px 10px;}
+    .gform-wrap iframe{border:none;width:100%;display:block;background:#0c0c0e;}
+
+    /* Google Form iframe dark override */
+    .gform-wrap{
+      position:relative;
+      background:#111114;
+      padding:0 1.5rem 1.5rem;
+    }
+    .gform-wrap iframe{
+      border-radius:0;
+      min-height:500px;
+      filter: invert(1) hue-rotate(180deg);
+    }
+    /* Re-invert images/logos inside so they don't go negative */
+    .gform-wrap iframe img { filter: invert(1) hue-rotate(180deg); }
     /* Content type toggle */
     .toggle-group{display:flex;gap:0;background:#111114;border:1px solid #27272a;border-radius:6px;padding:3px;}
     .toggle-btn{flex:1;padding:.5rem .75rem;border-radius:4px;border:none;cursor:pointer;font-family:'Syne',sans-serif;font-size:.75rem;font-weight:600;text-transform:uppercase;letter-spacing:.06em;transition:all .2s;background:transparent;color:#71717a;}
@@ -64,6 +80,7 @@
         <a href="#services" class="nav-link">Services</a>
         <a href="#audit" class="nav-link">Audits</a>
         <a href="#reviewers" class="nav-link">Reviewers</a>
+        <a href="pricing.html" class="nav-link">Pricing</a>
         <a href="redeem.html" class="nav-link">Redeem Voucher</a>
       </div>
       <a href="#audit" class="hidden md:inline-flex items-center gap-2 font-display font-600 text-xs uppercase tracking-widest text-accent border border-accent/40 hover:border-accent hover:bg-accent/5 transition-all px-4 py-2 rounded-md" style="font-size:.75rem;">Request Audit</a>
@@ -76,6 +93,7 @@
         <a href="#services" class="nav-link" onclick="document.getElementById('mobile-menu').classList.add('hidden')">Services</a>
         <a href="#audit" class="nav-link" onclick="document.getElementById('mobile-menu').classList.add('hidden')">Audits</a>
         <a href="#reviewers" class="nav-link" onclick="document.getElementById('mobile-menu').classList.add('hidden')">Reviewers</a>
+        <a href="pricing.html" class="nav-link" onclick="document.getElementById('mobile-menu').classList.add('hidden')">Pricing</a>
         <a href="redeem.html" class="nav-link" onclick="document.getElementById('mobile-menu').classList.add('hidden')">Redeem Voucher</a>
       </div>
     </div>
@@ -144,6 +162,7 @@
           <p class="text-xs uppercase tracking-widest text-muted font-display mb-4" style="letter-spacing:.12em;">Client Intake</p>
           <h2 class="font-display text-light mb-5" style="font-size:clamp(1.8rem,4vw,2.8rem);font-weight:700;letter-spacing:-.02em;">Professional Audience<br/>Retention Audits.</h2>
           <p class="text-soft mb-8 leading-relaxed" style="font-weight:300;max-width:420px;">Ensure your content resonates from the first second. Our private focus group of 70+ active creators provides the initial retention signals and community feedback needed for a successful launch.</p>
+          <a href="pricing.html" class="inline-flex items-center gap-2 text-accent text-sm font-display mb-8 hover:underline" style="font-weight:600;">View all packages & pricing →</a>
           <div class="space-y-4">
             <div class="flex items-start gap-4">
               <span class="flex-shrink-0 w-6 h-6 rounded-full bg-accent/10 border border-accent/30 flex items-center justify-center text-accent font-display text-xs" style="font-weight:700;">1</span>
@@ -161,59 +180,14 @@
         </div>
 
         <div class="reveal">
-          <div class="bg-card border border-border rounded-xl p-8">
-            <h3 class="font-display text-light mb-2" style="font-size:1.1rem;font-weight:700;">Request an Audit Mission</h3>
-            <p class="text-muted text-sm mb-7">Complete the form — we'll handle the rest.</p>
-            <form id="audit-form" class="space-y-4" novalidate>
-
-              <div>
-                <label class="field-label">Full Name</label>
-                <input id="audit-name" type="text" class="form-input" placeholder="Your full name" required />
-              </div>
-
-              <div>
-                <label class="field-label">Platform</label>
-                <select id="audit-platform" class="form-input" required>
-                  <option value="" disabled selected>Select Platform</option>
-                  <option value="YouTube">YouTube</option>
-                  <option value="TikTok">TikTok</option>
-                  <option value="Instagram">Instagram</option>
-                  <option value="Facebook">Facebook</option>
-                  <option value="X / Twitter">X / Twitter</option>
-                  <option value="LinkedIn">LinkedIn</option>
-                  <option value="Pinterest">Pinterest</option>
-                  <option value="Snapchat">Snapchat</option>
-                  <option value="Twitch">Twitch</option>
-                  <option value="Other">Other</option>
-                </select>
-              </div>
-
-              <div>
-                <label class="field-label">Content Type</label>
-                <div class="toggle-group" id="audit-content-type-toggle">
-                  <button type="button" class="toggle-btn active" data-value="Video">📹 Video</button>
-                  <button type="button" class="toggle-btn" data-value="Short / Reel">⚡ Short / Reel</button>
-                  <button type="button" class="toggle-btn" data-value="Post / Image">🖼 Post / Image</button>
-                  <button type="button" class="toggle-btn" data-value="Carousel">📱 Carousel</button>
-                </div>
-                <input type="hidden" id="audit-content-type" value="Video" />
-              </div>
-
-              <div>
-                <label class="field-label" id="audit-link-label">Content Link</label>
-                <input id="audit-video-link" type="url" class="form-input" placeholder="https://..." required />
-                <p class="text-xs text-muted mt-1.5" id="audit-link-hint">Paste the direct link to your content. Unlisted links are accepted.</p>
-              </div>
-
-              <div>
-                <label class="field-label">Professional Email</label>
-                <input id="audit-email" type="email" class="form-input" placeholder="you@studio.com" required />
-              </div>
-
-              <div id="audit-error" class="hidden text-accent text-sm py-2"></div>
-              <div class="pt-2"><button type="submit" class="btn-primary">Request Audit Mission</button></div>
-              <div id="audit-success" class="success-msg">✦ Mission received. Our reviewers are being notified.</div>
-            </form>
+          <div class="bg-card border border-border rounded-xl overflow-hidden">
+            <div class="px-8 pt-8 pb-4">
+              <h3 class="font-display text-light mb-1" style="font-size:1.1rem;font-weight:700;">Request an Audit Mission</h3>
+              <p class="text-muted text-sm">Complete the form — we'll handle the rest.</p>
+            </div>
+            <div class="gform-wrap">
+              <iframe src="https://docs.google.com/forms/d/e/1FAIpQLScbz0aS5MJSHAJ8shbNxmmaDHp6yJbK6fUx-VSFT2MLbadXgA/viewform?embedded=true&hl=en" width="100%" height="1100" frameborder="0" marginheight="0" marginwidth="0" scrolling="yes" style="display:block;background:#0c0c0e;min-height:1100px;">Loading…</iframe>
+            </div>
           </div>
         </div>
       </div>
@@ -225,43 +199,14 @@
     <div class="max-w-6xl mx-auto px-6">
       <div class="grid lg:grid-cols-2 gap-16 items-start">
         <div class="reveal order-2 lg:order-1">
-          <div class="bg-card border border-border rounded-xl p-8">
-            <h3 class="font-display text-light mb-2" style="font-size:1.1rem;font-weight:700;">Reviewer Application</h3>
-            <p class="text-muted text-sm mb-7">Applications are reviewed within 5–7 business days.</p>
-            <form id="reviewer-form" class="space-y-4" novalidate>
-              <div>
-                <label class="field-label">Full Name</label>
-                <input id="reviewer-name" type="text" class="form-input" placeholder="Your name" required />
-              </div>
-              <div>
-                <label class="field-label">Primary Platform</label>
-                <select id="reviewer-platform" class="form-input" required>
-                  <option value="" disabled selected>Where do you create?</option>
-                  <option value="YouTube">YouTube</option>
-                  <option value="TikTok">TikTok</option>
-                  <option value="Instagram">Instagram</option>
-                  <option value="Facebook">Facebook</option>
-                  <option value="X / Twitter">X / Twitter</option>
-                  <option value="LinkedIn">LinkedIn</option>
-                  <option value="Pinterest">Pinterest</option>
-                  <option value="Snapchat">Snapchat</option>
-                  <option value="Twitch">Twitch</option>
-                  <option value="Multiple Platforms">Multiple Platforms</option>
-                  <option value="Other">Other</option>
-                </select>
-              </div>
-              <div>
-                <label class="field-label">Social Handle</label>
-                <input id="reviewer-handle" type="text" class="form-input" placeholder="@yourchannel" required />
-              </div>
-              <div>
-                <label class="field-label">Email Address</label>
-                <input id="reviewer-email" type="email" class="form-input" placeholder="you@example.com" required />
-              </div>
-              <div id="reviewer-error" class="hidden text-accent text-sm py-2"></div>
-              <div class="pt-2"><button type="submit" class="btn-secondary">Apply to the Network</button></div>
-              <div id="reviewer-success" class="success-msg">✦ Mission received. Our reviewers are being notified.</div>
-            </form>
+          <div class="bg-card border border-border rounded-xl overflow-hidden">
+            <div class="px-8 pt-8 pb-4">
+              <h3 class="font-display text-light mb-1" style="font-size:1.1rem;font-weight:700;">Reviewer Application</h3>
+              <p class="text-muted text-sm">Applications are reviewed within 5–7 business days.</p>
+            </div>
+            <div class="gform-wrap">
+              <iframe src="https://docs.google.com/forms/d/e/1FAIpQLSdTLriuLsM4E-DtkgyAnddxpaCqq9wCNqG0ep2OzoEXoD02rQ/viewform?embedded=true&hl=en" width="100%" height="800" frameborder="0" marginheight="0" marginwidth="0" scrolling="yes" style="display:block;background:#0c0c0e;min-height:800px;">Loading…</iframe>
+            </div>
           </div>
         </div>
         <div class="reveal order-1 lg:order-2">
@@ -313,6 +258,7 @@
         <a href="#services" class="text-muted text-xs uppercase tracking-widest hover:text-accent transition-colors">Services</a>
         <a href="#audit" class="text-muted text-xs uppercase tracking-widest hover:text-accent transition-colors">Audits</a>
         <a href="#reviewers" class="text-muted text-xs uppercase tracking-widest hover:text-accent transition-colors">Join</a>
+        <a href="pricing.html" class="text-muted text-xs uppercase tracking-widest hover:text-accent transition-colors">Pricing</a>
         <a href="redeem.html" class="text-muted text-xs uppercase tracking-widest hover:text-accent transition-colors">Redeem</a>
       </div>
       <p class="text-muted text-xs">&copy; 2025 Chatterhelp. All rights reserved.</p>
