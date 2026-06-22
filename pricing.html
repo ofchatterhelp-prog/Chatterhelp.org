@@ -1,0 +1,488 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Pricing — Chatterhelp</title>
+  <link rel="icon" type="image/x-icon" href="favicon.ico" />
+  <link rel="icon" type="image/png" sizes="32x32" href="favicon-32.png" />
+  <link rel="apple-touch-icon" sizes="512x512" href="favicon-512.png" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;600;700;800&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet" />
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            bg:'#0c0c0e', surface:'#111114', card:'#161619',
+            border:'#27272a', muted:'#71717a', soft:'#a1a1aa',
+            light:'#e4e4e7', accent:'#ef4444',
+          },
+          fontFamily: { display:['Syne','sans-serif'], body:['Inter','sans-serif'] },
+        },
+      },
+    }
+  </script>
+  <style>
+    *,*::before,*::after{box-sizing:border-box;}
+    html{scroll-behavior:smooth;}
+    body{background-color:#0c0c0e;color:#e4e4e7;font-family:'Inter',sans-serif;}
+
+    .nav-link{position:relative;color:#a1a1aa;transition:color .2s;font-size:.875rem;letter-spacing:.02em;}
+    .nav-link::after{content:'';position:absolute;left:0;bottom:-2px;width:0;height:1px;background:#ef4444;transition:width .25s ease;}
+    .nav-link:hover{color:#f4f4f5;}.nav-link:hover::after{width:100%;}
+
+    .section-rule{width:40px;height:2px;background:#ef4444;margin-bottom:1.5rem;}
+
+    /* PRICING CARD */
+    .price-card{
+      background:#161619;
+      border:1px solid #27272a;
+      border-radius:12px;
+      padding:2rem;
+      position:relative;
+      transition:border-color .25s, transform .25s;
+      display:flex;
+      flex-direction:column;
+    }
+    .price-card:hover{
+      border-color:rgba(239,68,68,.4);
+      transform:translateY(-4px);
+    }
+    .price-card.featured{
+      border-color:rgba(239,68,68,.5);
+      background:linear-gradient(145deg,#1a0a0a 0%,#161619 60%);
+    }
+    .price-card.featured::before{
+      content:'MOST POPULAR';
+      position:absolute;
+      top:-1px; left:50%; transform:translateX(-50%);
+      background:#ef4444;
+      color:#fff;
+      font-family:'Syne',sans-serif;
+      font-size:.6rem;
+      font-weight:700;
+      letter-spacing:.12em;
+      padding:.3rem 1rem;
+      border-radius:0 0 6px 6px;
+    }
+
+    /* Card accent top bar */
+    .card-top{
+      height:2px;
+      background:#ef4444;
+      border-radius:2px;
+      margin-bottom:1.5rem;
+      width:40px;
+    }
+    .price-card.featured .card-top{
+      width:100%;
+      background:linear-gradient(90deg,#ef4444,#f97316);
+    }
+
+    /* Price display */
+    .price-amount{
+      font-family:'Syne',sans-serif;
+      font-size:2.2rem;
+      font-weight:800;
+      color:#e4e4e7;
+      letter-spacing:-.03em;
+      line-height:1;
+    }
+    .price-period{
+      font-size:.8rem;
+      color:#71717a;
+      font-family:'Inter',sans-serif;
+      font-weight:400;
+      margin-left:.25rem;
+    }
+
+    /* Stat row */
+    .stat-row{
+      display:flex;
+      align-items:baseline;
+      gap:.5rem;
+      padding:.5rem 0;
+      border-bottom:1px solid #1f1f22;
+    }
+    .stat-row:last-child{border-bottom:none;}
+    .stat-label{
+      font-size:.7rem;
+      color:#71717a;
+      text-transform:uppercase;
+      letter-spacing:.08em;
+      font-family:'Syne',sans-serif;
+      flex-shrink:0;
+      min-width:120px;
+    }
+    .stat-value{
+      font-size:.85rem;
+      color:#fca5a5;
+      font-weight:600;
+      font-family:'Syne',sans-serif;
+    }
+
+    /* Group label */
+    .group-label{
+      display:inline-flex;
+      align-items:center;
+      gap:8px;
+      padding:.45rem 1rem;
+      border-radius:100px;
+      font-family:'Syne',sans-serif;
+      font-size:.7rem;
+      font-weight:700;
+      letter-spacing:.1em;
+      text-transform:uppercase;
+      margin-bottom:2.5rem;
+    }
+    .group-label.boost{
+      background:rgba(239,68,68,.06);
+      border:1px solid rgba(239,68,68,.2);
+      color:#fca5a5;
+    }
+    .group-label.production{
+      background:rgba(249,115,22,.06);
+      border:1px solid rgba(249,115,22,.2);
+      color:#fdba74;
+    }
+
+    /* CTA button */
+    .btn-cta{
+      display:block;
+      text-align:center;
+      font-family:'Syne',sans-serif;
+      font-weight:600;
+      font-size:.8rem;
+      letter-spacing:.06em;
+      text-transform:uppercase;
+      padding:.8rem 1.5rem;
+      border-radius:6px;
+      border:1px solid #27272a;
+      color:#a1a1aa;
+      text-decoration:none;
+      transition:all .2s;
+      margin-top:auto;
+      padding-top:1rem;
+    }
+    .btn-cta:hover{border-color:#ef4444;color:#ef4444;}
+    .btn-cta.featured-btn{
+      background:#ef4444;
+      border-color:#ef4444;
+      color:#fff;
+    }
+    .btn-cta.featured-btn:hover{background:#dc2626;}
+
+    /* Reveal */
+    .reveal{opacity:0;transform:translateY(20px);transition:opacity .5s ease,transform .5s ease;}
+    .reveal.visible{opacity:1;transform:translateY(0);}
+
+    footer a:hover{color:#ef4444;}
+
+    /* Comparison note */
+    .compare-badge{
+      display:inline-flex;
+      align-items:center;
+      gap:6px;
+      background:#111114;
+      border:1px solid #27272a;
+      border-radius:6px;
+      padding:.4rem .8rem;
+      font-size:.72rem;
+      color:#71717a;
+      font-family:'Inter',sans-serif;
+    }
+  </style>
+</head>
+<body class="antialiased">
+
+  <!-- NAV -->
+  <header class="fixed top-0 left-0 right-0 z-50 border-b border-border/60" style="background:rgba(12,12,14,.9);backdrop-filter:blur(16px);">
+    <nav class="max-w-6xl mx-auto px-6 h-16 flex items-center justify-between">
+      <a href="index.html" class="font-display text-light" style="font-size:1.15rem;font-weight:800;letter-spacing:-.01em;">Chatter<span class="text-accent">help</span></a>
+      <div class="hidden md:flex items-center gap-8">
+        <a href="index.html#services" class="nav-link">Services</a>
+        <a href="index.html#audit" class="nav-link">Audits</a>
+        <a href="index.html#reviewers" class="nav-link">Reviewers</a>
+        <a href="redeem.html" class="nav-link">Redeem</a>
+      </div>
+      <a href="index.html#audit" class="hidden md:inline-flex items-center gap-2 font-display text-xs uppercase tracking-widest text-accent border border-accent/40 hover:border-accent hover:bg-accent/5 transition-all px-4 py-2 rounded-md" style="font-size:.75rem;">Request Audit</a>
+    </nav>
+  </header>
+
+  <!-- HERO -->
+  <section class="pt-32 pb-16 border-b border-border" style="background:radial-gradient(ellipse 70% 60% at 50% 0%,rgba(239,68,68,.07) 0%,transparent 70%);">
+    <div class="max-w-6xl mx-auto px-6">
+      <div class="max-w-2xl">
+        <div class="section-rule"></div>
+        <p class="text-xs uppercase tracking-widest text-muted font-display mb-4" style="letter-spacing:.12em;">Transparent Pricing</p>
+        <h1 class="font-display text-light mb-5" style="font-size:clamp(2rem,5vw,3.8rem);font-weight:800;letter-spacing:-.03em;">
+          Choose Your<br/><span class="text-accent">Growth Package.</span>
+        </h1>
+        <p class="text-soft leading-relaxed mb-8" style="font-weight:300;max-width:480px;">
+          Every package delivers real human attention, real retention signals, and real community feedback — not automated engagement or bot traffic.
+        </p>
+        <div class="flex flex-wrap gap-3">
+          <div class="compare-badge">
+            <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="#ef4444" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
+            All prices in ZAR
+          </div>
+          <div class="compare-badge">
+            <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="#ef4444" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
+            No hidden fees
+          </div>
+          <div class="compare-badge">
+            <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="#ef4444" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
+            Results within 48 hours
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- GROUP 1: BOOST PACKS -->
+  <section class="py-20">
+    <div class="max-w-6xl mx-auto px-6">
+
+      <div class="reveal mb-10">
+        <div class="group-label boost">
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#fca5a5" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="23 6 13.5 15.5 8.5 10.5 1 18"/><polyline points="17 6 23 6 23 12"/></svg>
+          🎯 Group 1: The Audience Boost Packs
+        </div>
+        <p class="text-muted text-sm max-w-xl" style="font-weight:300;">For creators who want real retention signals and community feedback on their existing content.</p>
+      </div>
+
+      <div class="grid md:grid-cols-3 gap-6">
+
+        <!-- Card 1 -->
+        <div class="reveal price-card">
+          <div class="card-top"></div>
+          <p class="text-xs text-muted uppercase tracking-widest font-display mb-3" style="letter-spacing:.1em;">Starter</p>
+          <h3 class="font-display text-light mb-4" style="font-size:1.2rem;font-weight:700;">The 3-Video Break</h3>
+          <div class="mb-6">
+            <span class="price-amount">R250</span>
+            <span class="price-period">one-time</span>
+          </div>
+          <p class="text-muted text-xs mb-5 leading-relaxed">Perfect for testing the waters. Three videos reviewed by our creator network with full retention feedback.</p>
+          <div class="space-y-0 mb-6 flex-1">
+            <p class="text-xs text-muted uppercase tracking-widest font-display mb-3" style="letter-spacing:.08em;">Estimated Results</p>
+            <div class="stat-row">
+              <span class="stat-label">Lift</span>
+              <span class="stat-value">+300 to 500+</span>
+            </div>
+            <div class="stat-row">
+              <span class="stat-label">Signals</span>
+              <span class="stat-value">+40 to 60+</span>
+            </div>
+            <div class="stat-row">
+              <span class="stat-label">Response</span>
+              <span class="stat-value">3 to 6</span>
+            </div>
+          </div>
+          <a href="index.html#audit" class="btn-cta">Request This Package →</a>
+        </div>
+
+        <!-- Card 2 — Featured -->
+        <div class="reveal price-card featured" style="transition-delay:.1s;">
+          <div class="card-top"></div>
+          <p class="text-xs text-red-400 uppercase tracking-widest font-display mb-3" style="letter-spacing:.1em;">Best Value</p>
+          <h3 class="font-display text-light mb-4" style="font-size:1.2rem;font-weight:700;">The 10-Video Season Pass</h3>
+          <div class="mb-6">
+            <span class="price-amount">R550</span>
+            <span class="price-period">one-time</span>
+          </div>
+          <p class="text-muted text-xs mb-5 leading-relaxed">A full content season reviewed and fed back. Build consistent retention data across ten pieces of content.</p>
+          <div class="space-y-0 mb-6 flex-1">
+            <p class="text-xs text-muted uppercase tracking-widest font-display mb-3" style="letter-spacing:.08em;">Estimated Results</p>
+            <div class="stat-row">
+              <span class="stat-label">Reach</span>
+              <span class="stat-value">+1,500 to 2,500+</span>
+            </div>
+            <div class="stat-row">
+              <span class="stat-label">Engagement</span>
+              <span class="stat-value">+200 to 300+</span>
+            </div>
+            <div class="stat-row">
+              <span class="stat-label">Activity</span>
+              <span class="stat-value">+15 to 25+</span>
+            </div>
+          </div>
+          <a href="index.html#audit" class="btn-cta featured-btn">Request This Package →</a>
+        </div>
+
+        <!-- Card 3 -->
+        <div class="reveal price-card" style="transition-delay:.2s;">
+          <div class="card-top"></div>
+          <p class="text-xs text-muted uppercase tracking-widest font-display mb-3" style="letter-spacing:.1em;">Monthly</p>
+          <h3 class="font-display text-light mb-4" style="font-size:1.2rem;font-weight:700;">30-Day Growth Accelerator</h3>
+          <div class="mb-6">
+            <span class="price-amount">R1,200</span>
+            <span class="price-period">/ month</span>
+          </div>
+          <p class="text-muted text-xs mb-5 leading-relaxed">Sustained monthly momentum. Your content reviewed continuously with signals feeding the algorithm every week.</p>
+          <div class="space-y-0 mb-6 flex-1">
+            <p class="text-xs text-muted uppercase tracking-widest font-display mb-3" style="letter-spacing:.08em;">Estimated Results</p>
+            <div class="stat-row">
+              <span class="stat-label">Monthly Floor</span>
+              <span class="stat-value">+5,000 to 8,000+</span>
+            </div>
+            <div class="stat-row">
+              <span class="stat-label">Instant Spark</span>
+              <span class="stat-value">50 to 100+</span>
+            </div>
+            <div class="stat-row">
+              <span class="stat-label">Authority</span>
+              <span class="stat-value">24/7 Continuous</span>
+            </div>
+          </div>
+          <a href="index.html#audit" class="btn-cta">Request This Package →</a>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- DIVIDER -->
+  <div class="max-w-6xl mx-auto px-6">
+    <div class="border-t border-border"></div>
+  </div>
+
+  <!-- GROUP 2: FULL SERVICE PRODUCTION -->
+  <section class="py-20">
+    <div class="max-w-6xl mx-auto px-6">
+
+      <div class="reveal mb-10">
+        <div class="group-label production">
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#fdba74" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polygon points="23 7 16 12 23 17 23 7"/><rect x="1" y="5" width="15" height="14" rx="2" ry="2"/></svg>
+          🎬 Group 2: The Full-Service Production Packs
+        </div>
+        <p class="text-muted text-sm max-w-xl" style="font-weight:300;">For busy business owners who want the content created and the stats delivered.</p>
+      </div>
+
+      <div class="grid md:grid-cols-3 gap-6">
+
+        <!-- Card 4 -->
+        <div class="reveal price-card">
+          <div class="card-top" style="background:#f97316;"></div>
+          <p class="text-xs text-muted uppercase tracking-widest font-display mb-3" style="letter-spacing:.1em;">Launch</p>
+          <h3 class="font-display text-light mb-4" style="font-size:1.2rem;font-weight:700;">The 3-Video Launch Bundle</h3>
+          <div class="mb-6">
+            <span class="price-amount">R1,500</span>
+            <span class="price-period">one-time</span>
+          </div>
+          <p class="text-muted text-xs mb-5 leading-relaxed">We produce, edit, and launch three premium videos built for retention — then drive the initial signals.</p>
+          <div class="space-y-0 mb-6 flex-1">
+            <p class="text-xs text-muted uppercase tracking-widest font-display mb-3" style="letter-spacing:.08em;">Estimated Results</p>
+            <div class="stat-row">
+              <span class="stat-label">Assets</span>
+              <span class="stat-value">3 Premium Videos</span>
+            </div>
+            <div class="stat-row">
+              <span class="stat-label">Initial Launch</span>
+              <span class="stat-value">+400 to 600+</span>
+            </div>
+            <div class="stat-row">
+              <span class="stat-label">Signal Lift</span>
+              <span class="stat-value">+50 to 80+</span>
+            </div>
+          </div>
+          <a href="index.html#audit" class="btn-cta">Request This Package →</a>
+        </div>
+
+        <!-- Card 5 — Featured production -->
+        <div class="reveal price-card" style="transition-delay:.1s;border-color:rgba(249,115,22,.3);">
+          <div class="card-top" style="background:linear-gradient(90deg,#f97316,#ef4444);width:100%;"></div>
+          <p class="text-xs uppercase tracking-widest font-display mb-3" style="letter-spacing:.1em;color:#fdba74;">Best Value</p>
+          <h3 class="font-display text-light mb-4" style="font-size:1.2rem;font-weight:700;">The 10-Video Content Campaign</h3>
+          <div class="mb-6">
+            <span class="price-amount">R4,200</span>
+            <span class="price-period">/ season</span>
+          </div>
+          <p class="text-muted text-xs mb-5 leading-relaxed">A full content season — scripted, edited, published, and boosted. The complete creative and distribution package.</p>
+          <div class="space-y-0 mb-6 flex-1">
+            <p class="text-xs text-muted uppercase tracking-widest font-display mb-3" style="letter-spacing:.08em;">Estimated Results</p>
+            <div class="stat-row">
+              <span class="stat-label">Assets</span>
+              <span class="stat-value">10 Scripted Videos</span>
+            </div>
+            <div class="stat-row">
+              <span class="stat-label">Traffic</span>
+              <span class="stat-value">+2,000 to 3,500+</span>
+            </div>
+            <div class="stat-row">
+              <span class="stat-label">Social Boost</span>
+              <span class="stat-value">+300 to 450+</span>
+            </div>
+          </div>
+          <a href="index.html#audit" class="btn-cta" style="border-color:rgba(249,115,22,.4);color:#fdba74;" onmouseover="this.style.borderColor='#f97316';this.style.color='#f97316';" onmouseout="this.style.borderColor='rgba(249,115,22,.4)';this.style.color='#fdba74';">Request This Package →</a>
+        </div>
+
+        <!-- Card 6 -->
+        <div class="reveal price-card" style="transition-delay:.2s;">
+          <div class="card-top" style="background:#f97316;"></div>
+          <p class="text-xs text-muted uppercase tracking-widest font-display mb-3" style="letter-spacing:.1em;">Retainer</p>
+          <h3 class="font-display text-light mb-4" style="font-size:1.2rem;font-weight:700;">Complete Social Takeover</h3>
+          <div class="mb-6">
+            <span class="price-amount">R9,500</span>
+            <span class="price-period">/ month</span>
+          </div>
+          <p class="text-muted text-xs mb-5 leading-relaxed">We run your entire social presence. 20 tailored videos, custom copy, maximum volume, continuous inbound momentum.</p>
+          <div class="space-y-0 mb-6 flex-1">
+            <p class="text-xs text-muted uppercase tracking-widest font-display mb-3" style="letter-spacing:.08em;">Estimated Results</p>
+            <div class="stat-row">
+              <span class="stat-label">Assets</span>
+              <span class="stat-value">20 Videos + Copywriting</span>
+            </div>
+            <div class="stat-row">
+              <span class="stat-label">Monthly Volume</span>
+              <span class="stat-value">+10,000 to 15,000+</span>
+            </div>
+            <div class="stat-row">
+              <span class="stat-label">Inbound</span>
+              <span class="stat-value">+1,500 to 2,500+</span>
+            </div>
+          </div>
+          <a href="index.html#audit" class="btn-cta">Request This Package →</a>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- BOTTOM CTA -->
+  <section class="py-20 border-t border-border" style="background:radial-gradient(ellipse 60% 80% at 50% 100%,rgba(239,68,68,.05) 0%,transparent 70%);">
+    <div class="max-w-2xl mx-auto px-6 text-center">
+      <h2 class="font-display text-light mb-4" style="font-size:clamp(1.6rem,4vw,2.5rem);font-weight:800;letter-spacing:-.02em;">Not Sure Which Package<br/>Is Right For You?</h2>
+      <p class="text-soft mb-8 leading-relaxed" style="font-weight:300;">Submit an audit request and mention your goals — our team will recommend the package that fits your current stage of growth.</p>
+      <div class="flex flex-col sm:flex-row gap-4 justify-center">
+        <a href="index.html#audit" class="font-display text-sm uppercase tracking-widest bg-accent hover:bg-red-600 text-white transition-all px-8 py-3.5 rounded-md" style="font-weight:600;">Request an Audit</a>
+        <a href="redeem.html" class="font-display text-sm uppercase tracking-widest border border-border hover:border-soft text-soft hover:text-light transition-all px-8 py-3.5 rounded-md" style="font-weight:600;">Redeem a Voucher</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- FOOTER -->
+  <footer class="border-t border-border py-12">
+    <div class="max-w-6xl mx-auto px-6 flex flex-col md:flex-row items-center justify-between gap-6">
+      <div>
+        <span class="font-display text-light" style="font-size:1rem;font-weight:800;letter-spacing:-.01em;">Chatter<span class="text-accent">help</span></span>
+        <p class="text-muted text-xs mt-1">Boutique Audience Intelligence Agency</p>
+      </div>
+      <div class="flex items-center gap-6">
+        <a href="index.html#services" class="text-muted text-xs uppercase tracking-widest hover:text-accent transition-colors">Services</a>
+        <a href="index.html#audit" class="text-muted text-xs uppercase tracking-widest hover:text-accent transition-colors">Audits</a>
+        <a href="pricing.html" class="text-muted text-xs uppercase tracking-widest hover:text-accent transition-colors">Pricing</a>
+        <a href="redeem.html" class="text-muted text-xs uppercase tracking-widest hover:text-accent transition-colors">Redeem</a>
+      </div>
+      <p class="text-muted text-xs">&copy; 2025 Chatterhelp. All rights reserved.</p>
+    </div>
+  </footer>
+
+  <script>
+    const observer=new IntersectionObserver((e)=>{e.forEach(e=>{if(e.isIntersecting)e.target.classList.add('visible');});},{threshold:.1});
+    document.querySelectorAll('.reveal').forEach(el=>observer.observe(el));
+  </script>
+</body>
+</html>
